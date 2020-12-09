@@ -41,7 +41,7 @@
               value="男"
               v-model="formData.gender"
               class="form-check-input"
-              checked="checked"
+              checked
             />
             <label for="male" class="form-check-label">男</label>
           </div>

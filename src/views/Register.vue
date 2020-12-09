@@ -22,7 +22,7 @@ export default {
       formData: {
         username: '',
         name: '',
-        gender: '',
+        gender: '男',
         password: '',
         emailAddress: '',
         phoneNumber: '',
