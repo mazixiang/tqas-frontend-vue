@@ -30,10 +30,16 @@ yarn lint
 
 ## 在 Docker 中运行
 
+构建 Docker 镜像
+
 ```shell
-$ docker build -t tqas-frontend-docker .\
-  && docker run\
-  -p 4040:8080\
-  --name tqas-frontend-docker\
-  tqas-frontend-docker
+$ docker build -t mazixiang/tqas-frontend-docker .
 ```
+
+运行 Docker 镜像
+
+```shell
+$ docker run -p 4040:8080 --name tqas-frontend-docker mazixiang/tqas-frontend-docker
+```
+
+在浏览器中访问 `http://localhost:4040`
