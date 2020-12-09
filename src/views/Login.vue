@@ -24,19 +24,21 @@ export default {
   },
   methods: {
     login: async function () {
-      await axios.post(urls.login, this.formData, {
-        headers: { 'content-type': 'application/x-www-form-unencoded' },
-      });
-      // .then((response) => {
-      //   switch (response.data.status) {
-      //     case "login-success":
-      //       this.$router.push("/admin-panel");
-      //       break;
-      //     case "user-not-found":
-      //       this.$router.push("/register");
-      //       break;
-      //   }
-      // });
+      await axios
+        .post(urls.login, JSON.stringify(this.formData))
+        .then((response) => {
+          switch (response.data.status) {
+            case 'success':
+              this.$router.push('/admin-panel');
+              break;
+            case 'user-not-found':
+              this.$router.push('/register');
+              break;
+            case 'err-wrong-password':
+              this.$router.push('/login');
+              break;
+          }
+        });
     },
     register: function () {
       this.$router.push('/register');

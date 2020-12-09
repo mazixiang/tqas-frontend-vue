@@ -18,6 +18,26 @@ const routes = [
     name: 'Register',
     component: () => import('@/views/Register'),
   },
+  {
+    path: '/adminManagement',
+    name: 'AdminManagement',
+    component: () => import('@/views/admin/AdminManagement'),
+  },
+  {
+    path: '/addAdmin',
+    name: 'AddAdmin',
+    component: () => import('@/views/admin/AddAdmin'),
+  },
+  {
+    path: '/teacherManagement',
+    name: 'TeacherManagement',
+    component: () => import('@/views/teacher/TeacherManagement'),
+  },
+  {
+    path: '/addTeacher',
+    name: 'AddTeacher',
+    component: () => import('@/views/teacher/AddTeacher'),
+  },
 ];
 
 const router = new VueRouter({

@@ -1,5 +1,8 @@
 <template>
   <div class="container">
+    <div class="row d-flex justify-content-center align-items-center">
+      <h2>{{ title }}</h2>
+    </div>
     <form @submit="$event.preventDefault()">
       <div class="row mb-3">
         <label for="username" class="col-md-3 col-form-label">工号</label>
@@ -7,7 +10,7 @@
           <input
             type="text"
             id="username"
-            v-model="formData.username"
+            v-model="userData.username"
             class="col-md-9 form-control"
             placeholder="输入工号"
             required
@@ -21,7 +24,7 @@
           <input
             type="text"
             id="name"
-            v-model="formData.name"
+            v-model="userData.name"
             class="col-md-9 form-control"
             placeholder="输入姓名"
             required
@@ -39,7 +42,7 @@
               type="radio"
               id="male"
               value="男"
-              v-model="formData.gender"
+              v-model="userData.gender"
               class="form-check-input"
               checked
             />
@@ -51,7 +54,7 @@
               type="radio"
               id="female"
               value="女"
-              v-model="formData.gender"
+              v-model="userData.gender"
               class="form-check-input"
             />
             <label for="female" class="form-check-label">女</label>
@@ -65,7 +68,7 @@
           <input
             type="password"
             id="password"
-            v-model="formData.password"
+            v-model="userData.password"
             class="col-md-9 form-control"
             placeholder="输入密码"
             required
@@ -79,7 +82,7 @@
           <input
             type="email"
             id="email-address"
-            v-model="formData.emailAddress"
+            v-model="userData.emailAddress"
             class="col-md-9 form-control"
             placeholder="输入邮箱"
             required
@@ -93,7 +96,7 @@
           <input
             type="text"
             id="phone-number"
-            v-model="formData.phoneNumber"
+            v-model="userData.phoneNumber"
             class="col-md-9 form-control"
             placeholder="输入电话"
             required
@@ -101,9 +104,9 @@
         </div>
       </div>
 
-      <div class="row mb-3 d-flex justify-content-center">
+      <div class="row mb-3 d-flex justify-content-center align-items-center">
         <div class="col col-md-12">
-          <button class="btn btn-outline-primary" @click="$emit('register')">
+          <button class="btn btn-outline-primary" @click="$emit('submit')">
             注册
           </button>
         </div>
@@ -116,7 +119,8 @@
 export default {
   name: 'RegisterForm',
   props: {
-    formData: Object,
+    title: String,
+    userData: Object,
   },
 };
 </script>
@@ -125,5 +129,9 @@ export default {
 .container {
   text-align: left;
   width: 450px;
+}
+
+h2 {
+  text-align: center;
 }
 </style>

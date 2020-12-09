@@ -2,19 +2,22 @@
 // server_url 是实际使用的 Tomcat Server URL
 let base_urls = {
   test_url: 'https://9017726d-aa51-4c85-aa24-6862ccefd556.mock.pstmn.io',
-  server_url: '',
+  server_url: 'http://localhost:7999',
 };
 
-let base_url = base_urls.test_url;
+let base_url = base_urls.server_url;
 
 let paths = {
   login: '/login',
   register: '/register',
+  queryAllAdmins: '/queryAllAdmins',
+  deleteAdmin: '/deleteAdmin'
 };
 
-let urls = {
-  login: base_url + paths.login,
-  register: base_url + paths.register,
-};
+// 根据 base_url 和 paths 生成完整的 url
+
+let urls = Object.fromEntries(
+  Object.entries(paths).map(([key, value]) => [key, base_url + value])
+);
 
 export default urls;

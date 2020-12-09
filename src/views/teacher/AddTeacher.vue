@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <UserForm :user-data="userData" title="用户注册" @submit="register" />
+    <UserForm :user-data="teacherData" title="添加教师" @submit="addTeacher" />
   </div>
 </template>
 
@@ -10,16 +10,16 @@ import axios from 'axios';
 import urls from '@/lib/global-variables';
 
 export default {
-  name: 'Register',
+  name: 'AddAdmin',
   metaInfo: {
-    title: '用户注册',
+    title: '添加教师',
   },
   components: {
     UserForm,
   },
   data: function () {
     return {
-      userData: {
+      teacherData: {
         username: '',
         name: '',
         gender: '男',
@@ -30,11 +30,15 @@ export default {
     };
   },
   methods: {
-    register: async function () {
+    async addTeacher() {
       await axios
-        .post(urls.register, JSON.stringify(this.userData))
+        .post(urls.addTeacher, JSON.stringify(this.teacherData))
         .then((response) => {
-          console.log(response);
+          switch (response.data.status) {
+            case 'success':
+              this.$router.push('/teacherManagement');
+              break;
+          }
         });
     },
   },
