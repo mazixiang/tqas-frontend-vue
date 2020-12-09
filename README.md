@@ -1,12 +1,14 @@
 # tqas-frontend-vue
 
-## 项目初始化
+教师量化考核系统前端的 Vue 实现
+
+## 安装项目依赖
 
 ```shell
 yarn install
 ```
 
-### 开启开发服务器
+### 启动开发服务器
 
 ```shell
 yarn serve
