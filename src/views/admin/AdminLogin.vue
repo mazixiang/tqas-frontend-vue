@@ -1,18 +1,24 @@
 <template>
-  <LoginForm :form-data="formData" @login="login" @register="register" />
+  <LoginForm
+    :form-data="formData"
+    :show-register-btn="false"
+    title="管理员登录"
+    @login="login"
+    @register="register"
+  />
 </template>
 
 <script>
 import axios from 'axios';
 import LoginForm from '@/components/LoginForm';
 
-import urls from '../lib/global-variables';
+import urls from '@/lib/global-variables';
 
 export default {
-  name: 'Login',
+  name: 'AdminLogin',
   components: { LoginForm },
   metaInfo: {
-    title: '用户登录',
+    title: '管理员登录',
   },
   data() {
     return {
@@ -25,7 +31,7 @@ export default {
   methods: {
     async login() {
       await axios
-        .post(urls.login, JSON.stringify(this.formData))
+        .post(urls.adminLogin, JSON.stringify(this.formData))
         .then((response) => {
           switch (response.data.status) {
             case 'success':

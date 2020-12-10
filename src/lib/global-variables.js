@@ -9,6 +9,7 @@ let base_url = base_urls.server_url;
 
 let paths = {
   login: '/login',
+  adminLogin: '/adminLogin',
   register: '/register',
   queryAllAdmins: '/queryAllAdmins',
   deleteAdmin: '/deleteAdmin'

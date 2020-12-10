@@ -2,8 +2,8 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">主页</router-link> |
-      <router-link to="/login">登录</router-link> |
-      <router-link to="/register">注册</router-link>
+      <router-link to="/teacher/login">教师登录</router-link> |
+      <router-link to="/admin/login">管理员登录</router-link>
     </div>
     <router-view />
   </div>

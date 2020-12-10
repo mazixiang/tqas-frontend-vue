@@ -127,7 +127,6 @@ export default {
 
 <style scoped>
 .container {
-  text-align: left;
   width: 450px;
 }
 

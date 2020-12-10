@@ -9,14 +9,19 @@ const routes = [
     component: () => import('../views/Home'),
   },
   {
-    path: '/login',
+    path: '/teacher/login',
     name: 'Login',
-    component: () => import('@/views/Login'),
+    component: () => import('@/views/teacher/TeacherLogin'),
   },
   {
-    path: '/register',
+    path: '/teacher/register',
     name: 'Register',
-    component: () => import('@/views/Register'),
+    component: () => import('@/views/teacher/TeacherRegister'),
+  },
+  {
+    path: '/admin/login',
+    name: 'AdminLogin',
+    component: () => import('@/views/admin/AdminLogin')
   },
   {
     path: '/adminManagement',
@@ -24,7 +29,7 @@ const routes = [
     component: () => import('@/views/admin/AdminManagement'),
   },
   {
-    path: '/addAdmin',
+    path: '/admin/add',
     name: 'AddAdmin',
     component: () => import('@/views/admin/AddAdmin'),
   },
@@ -34,7 +39,7 @@ const routes = [
     component: () => import('@/views/teacher/TeacherManagement'),
   },
   {
-    path: '/addTeacher',
+    path: '/teacher/add',
     name: 'AddTeacher',
     component: () => import('@/views/teacher/AddTeacher'),
   },
