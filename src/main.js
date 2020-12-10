@@ -15,6 +15,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import store from './store'
 
 library.add(faTrashAlt, faEdit, faSyncAlt, faPlus, faUser, faLock);
 
@@ -24,7 +25,8 @@ Vue.config.productionTip = false;
 
 new Vue({
   router,
-  render: (h) => h(App),
+  store,
+  render: (h) => h(App)
 }).$mount('#app');
 
 Vue.use(Meta);
