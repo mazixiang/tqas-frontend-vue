@@ -4,7 +4,7 @@
       <h2>{{ title }}</h2>
     </div>
     <form @submit="$event.preventDefault()">
-      <div class="row mb-3">
+      <div class="row mb-3 form-group">
         <label for="username" class="col-md-4 col-form-label"><font-awesome-icon icon="user" /> 用户名</label>
         <div class="col-md-8">
           <input
@@ -17,7 +17,7 @@
         </div>
       </div>
 
-      <div class="row mb-3">
+      <div class="row mb-3 form-group">
         <label for="password" class="col-md-4 col-form-label"><font-awesome-icon icon="lock" /> 密码</label>
         <div class="col-md-8">
           <input
@@ -83,4 +83,9 @@ export default {
 .btn {
   width: 60%;
 }
+
+.form-group {
+  text-align: left;
+}
+
 </style>
