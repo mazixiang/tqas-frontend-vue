@@ -45,24 +45,24 @@
     </table>
 
     <div class="row d-flex justify-content-end">
-      <div class="col-md-1">
+      <div class="col-md-2">
         <button
           class="btn btn-outline-primary btn-sm"
           @click="$emit('refresh-table')"
         >
           <font-awesome-icon icon="sync-alt" />
+          刷新列表
         </button>
-
-        &nbsp;
-
+      </div>
+      <div class="col-md-2">
         <button
-          class="btn btn-outline-primary btn-sm"
+          class="btn btn-outline-info btn-sm"
           @click="$emit('add-user')"
         >
           <font-awesome-icon icon="plus" />
+          添加记录
         </button>
       </div>
-      <div class="col-md-1"></div>
     </div>
   </div>
 </template>
@@ -77,4 +77,10 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+
+.btn {
+  width: 60%;
+}
+
+</style>

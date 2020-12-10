@@ -35,6 +35,7 @@ export default {
         .then((response) => {
           switch (response.data.status) {
             case 'success':
+              this.$store.state.currentUserId = this.formData.username;
               this.$router.push('/admin-panel');
               break;
             case 'user-not-found':
