@@ -20,7 +20,7 @@ export default {
     title: '管理员信息管理',
   },
   components: { UserTable },
-  data: function () {
+  data () {
     return {
       admins: [],
     };

@@ -20,7 +20,7 @@ export default {
     title: '教师管理',
   },
   components: { UserTable },
-  data: function () {
+  data() {
     return {
       teachers: [],
     };

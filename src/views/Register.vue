@@ -17,7 +17,7 @@ export default {
   components: {
     UserForm,
   },
-  data: function () {
+  data() {
     return {
       userData: {
         username: '',
@@ -30,7 +30,7 @@ export default {
     };
   },
   methods: {
-    register: async function () {
+    async register() {
       await axios
         .post(urls.register, JSON.stringify(this.userData))
         .then((response) => {

@@ -17,7 +17,7 @@ export default {
   components: {
     UserForm,
   },
-  data: function () {
+  data() {
     return {
       teacherData: {
         username: '',

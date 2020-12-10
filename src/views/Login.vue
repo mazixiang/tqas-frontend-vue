@@ -14,7 +14,7 @@ export default {
   metaInfo: {
     title: '用户登录',
   },
-  data: function () {
+  data() {
     return {
       formData: {
         username: '',
@@ -23,7 +23,7 @@ export default {
     };
   },
   methods: {
-    login: async function () {
+    async login() {
       await axios
         .post(urls.login, JSON.stringify(this.formData))
         .then((response) => {
@@ -40,7 +40,7 @@ export default {
           }
         });
     },
-    register: function () {
+    register() {
       this.$router.push('/register');
     },
   },
