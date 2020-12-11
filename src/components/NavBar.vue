@@ -1,24 +1,24 @@
 <template>
-  <div class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid py-1">
+  <div class="navbar navbar-expand-md navbar-light bg-light">
+    <div class="container-fluid">
       <button
         class="navbar-toggler"
         type="button"
         data-bs-toggle="collapse"
-        data-bs-target="#navbarTogglerDemo01"
-        aria-controls="navbarTogglerDemo01"
-        aria-expanded="false"
+        data-bs-target="#navbar-toggle"
+        aria-controls="navbar-toggle"
+        aria-expanded="true"
         aria-label="Toggle navigation"
       >
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse">
+      <div class="collapse navbar-collapse" id="navbar-toggle">
         <router-link to="/" class="navbar-brand">
           <font-awesome-icon icon="home" />
           主页
         </router-link>
-        <ul class="navbar-nav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item" v-for="(nav, index) in startNavs" :key="index">
             <router-link :to="nav.link" class="nav-link">
               {{ nav.content }}
@@ -45,7 +45,9 @@
 
         <ul class="navbar-nav flex-row flex-wrap ms-md-4" v-if="!userLoggedIn">
           <li class="nav-item" v-for="(nav, index) in endNavs" :key="index">
-            <router-link :to="nav.link" class="nav-link">{{ nav.content }}</router-link>
+            <router-link :to="nav.link" class="nav-link">
+              {{ nav.content }}
+            </router-link>
           </li>
         </ul>
       </div>

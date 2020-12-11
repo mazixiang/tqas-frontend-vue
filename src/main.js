@@ -16,6 +16,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/js/dist/collapse';
 import store from './store';
 
 library.add(faTrashAlt, faEdit, faSyncAlt, faPlus, faUser, faLock, faHome);

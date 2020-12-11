@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import LoginForm from '@/components/LoginForm';]
+import LoginForm from '@/components/LoginForm';
 import { teacherLogin } from '@/api/teacher';
 
 export default {

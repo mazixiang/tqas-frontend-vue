@@ -1,9 +1,7 @@
 <template>
   <div class="container">
-    <div v-if="enterFromOtherEntrance" class="alert alert-danger">
-      <h1>错误</h1>
-      <hr />
-      <p>你似乎从其他入口进入，请从管理员表单进入此页面</p>
+    <div v-if="enterFromOtherEntrance">
+      <EnterFromOtherEntranceError />
     </div>
     <div v-else>
       <UserForm
@@ -20,10 +18,11 @@
 import UserForm from '@/components/UserForm';
 import queryAdminById from '@/api/admin/queryAdminById';
 import updateAdmin from '@/api/admin/updateAdmin';
+import EnterFromOtherEntranceError from "@/components/error/EnterFromOtherEntranceError";
 
 export default {
   name: 'UpdateAdmin',
-  components: { UserForm },
+  components: {EnterFromOtherEntranceError, UserForm },
   metaInfo: {
     title: '管理员信息修改',
   },

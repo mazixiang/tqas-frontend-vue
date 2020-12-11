@@ -19,34 +19,46 @@ const routes = [
     component: () => import('@/views/teacher/TeacherRegister'),
   },
   {
-    path: '/admin/login',
-    name: 'AdminLogin',
-    component: () => import('@/views/admin/AdminLogin'),
-  },
-  {
-    path: '/admin/home',
-    name: 'AdminHome',
-    component: () => import('@/views/admin/AdminHome'),
-  },
-  {
-    path: '/admin/manage',
-    name: 'AdminManagement',
-    component: () => import('@/views/admin/AdminManagement'),
-  },
-  {
-    path: '/admin/add',
-    name: 'AddAdmin',
-    component: () => import('@/views/admin/AddAdmin'),
-  },
-  {
-    path: '/admin/update',
-    name: 'UpdateAdmin',
-    component: () => import('@/views/admin/UpdateAdmin'),
-  },
-  {
-    path: '/teacher/manage',
-    name: 'TeacherManagement',
-    component: () => import('@/views/teacher/TeacherManagement'),
+    path: '/admin',
+    component: () => import('@/views/admin/Admin'),
+    children: [
+      {
+        path: '',
+        name: 'AdminHome',
+        component: () => import('@/views/admin/AdminHome'),
+      },
+      {
+        path: 'updateCoefficient',
+        name: 'updateCoefficient',
+        component: () => import('@/views/admin/UpdateCoefficient'),
+      },
+      {
+        path: 'manage',
+        name: 'AdminManagement',
+        component: () => import('@/views/admin/AdminManagement'),
+      },
+      {
+        path: 'login',
+        name: 'AdminLogin',
+        component: () => import('@/views/admin/AdminLogin'),
+      },
+
+      {
+        path: 'add',
+        name: 'AddAdmin',
+        component: () => import('@/views/admin/AddAdmin'),
+      },
+      {
+        path: 'update',
+        name: 'UpdateAdmin',
+        component: () => import('@/views/admin/UpdateAdmin'),
+      },
+      {
+        path: 'manageTeacher',
+        name: 'TeacherManagement',
+        component: () => import('@/views/teacher/TeacherManagement'),
+      },
+    ],
   },
   {
     path: '/teacher/add',
@@ -60,5 +72,13 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes,
 });
+
+// router.beforeEach((to, from, next) => {
+//   if (to.path === '/teacher/login' || to.path === '/admin/login') {
+//     next();
+//   } else if (to.path.match(/\/admin\/*/g)) {
+//
+//   }
+// });
 
 export default router;

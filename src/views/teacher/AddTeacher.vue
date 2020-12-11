@@ -6,9 +6,7 @@
 
 <script>
 import UserForm from '@/components/UserForm';
-import axios from 'axios';
-import urls from '@/api/urls';
-import {addTeacher} from '@/api/teacher'
+import { addTeacher } from '@/api/teacher';
 
 export default {
   name: 'AddAdmin',
@@ -32,13 +30,13 @@ export default {
   },
   methods: {
     async doAdd() {
-      await addTeacher(this.teacherData).then(response => {
-        switch(response.status) {
+      await addTeacher(this.teacherData).then((response) => {
+        switch (response.status) {
           case 'success':
             // TODO 修改管理教师的页面
             this.$router.push('/admin/manageTeacher');
         }
-      })
+      });
     },
   },
 };

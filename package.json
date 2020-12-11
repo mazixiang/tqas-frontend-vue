@@ -15,6 +15,7 @@
     "axios": "^0.21.0",
     "bootstrap": "^5.0.0-beta1",
     "core-js": "^3.6.5",
+    "moment": "^2.29.1",
     "vue": "^2.6.11",
     "vue-meta": "^2.4.0",
     "vue-router": "^3.4.9",
