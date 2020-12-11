@@ -16,6 +16,9 @@ let paths = {
   addAdmin: '/addAdmin',
   deleteAdmin: '/deleteAdmin',
   queryAllTeachers: '/queryAllTeachers',
+  queryTeacherById: '/queryTeacherById',
+  addTeacher: '/addTeacher',
+  deleteTeacher: '/deleteTeacher',
 };
 
 // 根据 base_url 和 paths 生成完整的 url

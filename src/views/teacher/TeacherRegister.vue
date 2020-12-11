@@ -1,13 +1,12 @@
 <template>
   <div class="container">
-    <UserForm :user-data="userData" title="用户注册" @submit="register" />
+    <UserForm :user-data="teacherData" title="用户注册" @submit="register" />
   </div>
 </template>
 
 <script>
 import UserForm from '@/components/UserForm';
-import axios from 'axios';
-import urls from '@/api/urls';
+import {addTeacher} from "@/api/teacher";
 
 export default {
   name: 'Register',
@@ -19,7 +18,7 @@ export default {
   },
   data() {
     return {
-      userData: {
+      teacherData: {
         id: '',
         name: '',
         gender: '男',
@@ -31,14 +30,15 @@ export default {
   },
   methods: {
     async register() {
-      await axios
-        .post(urls.register, JSON.stringify(this.userData))
-        .then((response) => {
-          console.log(response);
-        });
+      await addTeacher(this.teacherData).then(response=> {
+        switch (response.status) {
+          case 'success':
+            // TODO 修改教师主页
+            this.$router.push('/teacher/home');
+        }
+      })
     },
   },
 };
 </script>
 
-<style scoped></style>

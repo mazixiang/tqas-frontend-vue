@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <UserForm :user-data="teacherData" title="添加教师" @submit="addTeacher" />
+    <UserForm :user-data="teacherData" title="添加教师" @submit="doAdd" />
   </div>
 </template>
 
@@ -8,6 +8,7 @@
 import UserForm from '@/components/UserForm';
 import axios from 'axios';
 import urls from '@/api/urls';
+import {addTeacher} from '@/api/teacher'
 
 export default {
   name: 'AddAdmin',
@@ -30,16 +31,14 @@ export default {
     };
   },
   methods: {
-    async addTeacher() {
-      await axios
-        .post(urls.addTeacher, JSON.stringify(this.teacherData))
-        .then((response) => {
-          switch (response.data.status) {
-            case 'success':
-              this.$router.push('/teacherManagement');
-              break;
-          }
-        });
+    async doAdd() {
+      await addTeacher(this.teacherData).then(response => {
+        switch(response.status) {
+          case 'success':
+            // TODO 修改管理教师的页面
+            this.$router.push('/admin/manageTeacher');
+        }
+      })
     },
   },
 };

@@ -1,12 +1,15 @@
 <template>
-  <LoginForm :form-data="formData" title="教师登录" @login="login" @register="register" />
+  <LoginForm
+    :form-data="teacherData"
+    title="教师登录"
+    @login="login"
+    @register="register"
+  />
 </template>
 
 <script>
-import axios from 'axios';
-import LoginForm from '@/components/LoginForm';
-
-import urls from '@/api/urls';
+import LoginForm from '@/components/LoginForm';]
+import { teacherLogin } from '@/api/teacher';
 
 export default {
   name: 'Login',
@@ -16,7 +19,7 @@ export default {
   },
   data() {
     return {
-      formData: {
+      teacherData: {
         id: '',
         password: '',
       },
@@ -24,21 +27,20 @@ export default {
   },
   methods: {
     async login() {
-      await axios
-        .post(urls.login, JSON.stringify(this.formData))
-        .then((response) => {
-          switch (response.data.status) {
-            case 'success':
-              this.$router.push('/admin-panel');
-              break;
-            case 'user-not-found':
-              this.$router.push('/register');
-              break;
-            case 'err-wrong-password':
-              this.$router.push('/login');
-              break;
-          }
-        });
+      await teacherLogin(this.teacherData).then((response) => {
+        switch (response.status) {
+          case 'success':
+            // TODO 教师主页
+            this.$router.push('/teacher/:/home');
+            break;
+          case 'err-user-not-found':
+            this.$router.push('/register');
+            break;
+          case 'err-wrong-password':
+            this.$router.push('/login');
+            break;
+        }
+      });
     },
     register() {
       this.$router.push('/teacher/register');

@@ -12,8 +12,8 @@
 
 <script>
 import UserTable from '@/components/UserTable';
-import axios from 'axios';
-import urls from '@/api/urls';
+import { queryAllTeachers, deleteTeacher } from '@/api/teacher';
+
 export default {
   name: 'TeacherManagement',
   metaInfo: {
@@ -27,21 +27,31 @@ export default {
   },
   methods: {
     async refreshTable() {
-      await axios.get(urls.queryAllTeachers).then((response) => {
-        console.log(response);
-        switch (response.data.status) {
+      await queryAllTeachers().then((response) => {
+        switch (response.status) {
           case 'success':
-            this.admins = response.data.data.slice();
+            this.teachers = response.data.slice();
             break;
           case 'err-user-not-login':
             this.$router.push('/login');
             break;
+          case 'err-user-not-admin':
+            // TODO 未完成判断 User 是管理员的部分
+            break;
         }
       });
     },
-    async deleteTeacher() {
-      await axios.get(urls.deleteTeacher).then((response) => {
-        console.log(response);
+    async deleteTeacher(id) {
+      // await axios.get(urls.deleteTeacher).then((response) => {
+      //   console.log(response);
+      // });
+      await deleteTeacher(id).then((response) => {
+        switch (response.status) {
+          // TODO 修改管理教师页面的路径
+          case 'success':
+            this.$router.push('/teacherManagement');
+            break;
+        }
       });
     },
     addTeacher() {
