@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="row d-flex justify-content-center align-items-center">
+    <div class="row d-flex justify-content-center align-items-center my-2">
       <h2>{{ title }}</h2>
     </div>
     <form @submit="$event.preventDefault()">

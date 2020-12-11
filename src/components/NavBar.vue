@@ -1,6 +1,6 @@
 <template>
-  <div class="navbar">
-    <div class="container-fluid">
+  <div class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid py-1">
       <button
         class="navbar-toggler"
         type="button"
@@ -14,18 +14,29 @@
       </button>
 
       <div class="collapse navbar-collapse">
-      <router-link to="/" class="navbar-brand">
-        <font-awesome-icon icon="home" />
-        主页
-      </router-link>
-      <ul class="navbar-nav">
-        <li class="nav-item" v-for="(nav, index) in navs" :key="index">
-          <router-link to="{{ nav.link }}">{{ nav.content }}</router-link>
-        </li>
-      </ul>
+        <router-link to="/" class="navbar-brand">
+          <font-awesome-icon icon="home" />
+          主页
+        </router-link>
+        <ul class="navbar-nav">
+          <li class="nav-item" v-for="(nav, index) in navs" :key="index">
+            <router-link :to="nav.link" class="nav-link">
+              {{ nav.content }}
+            </router-link>
+          </li>
+        </ul>
 
-
-    </div>
+        <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
+          <li class="nav-item" v-for="(nav, index) in endNavs" :key="index">
+            <router-link :to="nav.link" class="nav-link">
+              {{ nav.content }}
+            </router-link>
+          </li>
+          <li class="nav-item" v-if="showLogoutBtn">
+            <button class="ntn btn-link" @click="$emit('logout')">退出登录</button>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
@@ -35,8 +46,17 @@ export default {
   name: 'NavBar',
   props: {
     navs: Array,
+    endNavs: Array,
+    showLogoutBtn: {
+      type: Boolean,
+      default: false,
+    },
   },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.navbar {
+  margin-bottom: 3vh;
+}
+</style>

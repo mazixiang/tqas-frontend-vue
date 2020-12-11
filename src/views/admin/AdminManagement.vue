@@ -6,48 +6,68 @@
       @delete-user="deleteAdmin($event)"
       @refresh-table="refreshTable()"
       @add-user="addAdmin()"
+      @update-user="updateAdmin($event)"
     />
   </div>
 </template>
 
 <script>
 import UserTable from '@/components/UserTable';
-import axios from 'axios';
-import urls from '../../lib/global-variables';
+import queryAllAdmins from '@/api/admin/queryAllAdmins';
+import deleteAdmin from '@/api/admin/deleteAdmin';
+
 export default {
   name: 'ManageAdmin',
   metaInfo: {
     title: '管理员信息管理',
   },
   components: { UserTable },
-  data () {
+  data() {
     return {
       admins: [],
     };
   },
   methods: {
     async refreshTable() {
-      await axios.get(urls.queryAllAdmins).then((response) => {
-        console.log(response);
-        switch (response.data.status) {
+      // await axios.get(urls.queryAllAdmins).then((response) => {
+      //   console.log(response);
+      //   switch (response.data.status) {
+      //     case 'success':
+      //       this.admins = response.data.data.slice();
+      //       break;
+      //     case 'err-user-not-login':
+      //       this.$router.push('/login');
+      //       break;
+      //   }
+      // });
+
+      await queryAllAdmins().then((response) => {
+        switch (response.status) {
           case 'success':
-            this.admins = response.data.data.slice();
+            this.admins = response.data.slice();
             break;
-          case 'err-user-not-login':
-            this.$router.push('/login');
-            break;
+          case 'err-admin-not-login':
+            this.$router.push('/admin/login');
         }
       });
     },
-    async deleteAdmin() {
-      await axios.get(urls.deleteAdmin, {params: {
-        
-        }}).then((response) => {
-        console.log(response);
-      });
+    async deleteAdmin(id) {
+      let response = deleteAdmin(id);
+      switch (response.status) {
+        case 'success':
+          console.log(response);
+      }
     },
     addAdmin() {
       this.$router.push('/addAdmin');
+    },
+    updateAdmin(id) {
+      this.$router.push({
+        name: 'UpdateAdmin',
+        params: {
+          id,
+        },
+      });
     },
   },
   created() {

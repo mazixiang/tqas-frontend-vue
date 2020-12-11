@@ -5,13 +5,14 @@ let base_urls = {
   server_url: 'http://localhost:7999',
 };
 
-let base_url = base_urls.server_url;
+let base_url = base_urls.test_url;
 
 let paths = {
   login: '/login',
-  adminLogin: '/adminLogin',
+  adminLogin: '/admin/login',
   register: '/register',
   queryAllAdmins: '/queryAllAdmins',
+  queryAdminById: '/queryAdminById',
   deleteAdmin: '/deleteAdmin',
   queryAllTeachers: '/queryAllTeachers',
 };

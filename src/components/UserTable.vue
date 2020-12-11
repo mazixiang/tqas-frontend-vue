@@ -25,8 +25,8 @@
           <td>{{ user.phoneNumber }}</td>
           <td>
             <button
-              class="btn btn-outline-info btn-sm"
-              @click="$emit('update-user')"
+              class="btn btn-outline-info btn-sm btn-operation"
+              @click="$emit('update-user', user.id)"
             >
               <font-awesome-icon icon="edit" />
             </button>
@@ -34,7 +34,7 @@
             &nbsp;
 
             <button
-              class="btn btn-outline-danger btn-sm"
+              class="btn btn-outline-danger btn-sm btn-operation"
               @click="$emit('delete-user', user.id)"
             >
               <font-awesome-icon icon="trash-alt" />
@@ -46,19 +46,13 @@
 
     <div class="row d-flex justify-content-end">
       <div class="col-md-2">
-        <button
-          class="btn btn-outline-primary btn-sm"
-          @click="$emit('refresh-table')"
-        >
+        <button class="btn btn-outline-primary" @click="$emit('refresh-table')">
           <font-awesome-icon icon="sync-alt" />
           刷新列表
         </button>
       </div>
       <div class="col-md-2">
-        <button
-          class="btn btn-outline-info btn-sm"
-          @click="$emit('add-user')"
-        >
+        <button class="btn btn-outline-info" @click="$emit('add-user')">
           <font-awesome-icon icon="plus" />
           添加记录
         </button>
@@ -78,9 +72,12 @@ export default {
 </script>
 
 <style scoped>
-
 .btn {
   width: 60%;
+}
+
+.btn-operation {
+  width: 30%;
 }
 
 </style>

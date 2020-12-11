@@ -6,7 +6,7 @@
 import axios from 'axios';
 import LoginForm from '@/components/LoginForm';
 
-import urls from '@/lib/global-variables';
+import urls from '@/api/urls';
 
 export default {
   name: 'Login',

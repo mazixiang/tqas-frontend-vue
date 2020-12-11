@@ -7,7 +7,7 @@
 <script>
 import UserForm from '@/components/UserForm';
 import axios from 'axios';
-import urls from '@/lib/global-variables';
+import urls from '@/api/urls';
 
 export default {
   name: 'AddAdmin',

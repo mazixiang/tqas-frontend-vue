@@ -13,7 +13,7 @@
 <script>
 import UserTable from '@/components/UserTable';
 import axios from 'axios';
-import urls from '@/lib/global-variables';
+import urls from '@/api/urls';
 export default {
   name: 'TeacherManagement',
   metaInfo: {

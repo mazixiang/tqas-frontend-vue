@@ -6,7 +6,7 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: () => import('../views/Home'),
+    component: () => import('@/views/Home'),
   },
   {
     path: '/teacher/login',
@@ -21,10 +21,15 @@ const routes = [
   {
     path: '/admin/login',
     name: 'AdminLogin',
-    component: () => import('@/views/admin/AdminLogin')
+    component: () => import('@/views/admin/AdminLogin'),
   },
   {
-    path: '/adminManagement',
+    path: '/admin/home',
+    name: 'AdminHome',
+    component: () => import('@/views/admin/AdminHome'),
+  },
+  {
+    path: '/admin/manage',
     name: 'AdminManagement',
     component: () => import('@/views/admin/AdminManagement'),
   },
@@ -34,7 +39,12 @@ const routes = [
     component: () => import('@/views/admin/AddAdmin'),
   },
   {
-    path: '/teacherManagement',
+    path: '/admin/update',
+    name: 'UpdateAdmin',
+    component: () => import('@/views/admin/UpdateAdmin'),
+  },
+  {
+    path: '/teacher/manage',
     name: 'TeacherManagement',
     component: () => import('@/views/teacher/TeacherManagement'),
   },

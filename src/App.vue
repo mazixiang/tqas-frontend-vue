@@ -1,13 +1,44 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">主页</router-link> |
-      <router-link to="/teacher/login">教师登录</router-link> |
-      <router-link to="/admin/login">管理员登录</router-link>
+    <div v-if="$store.state.currentUserId == null" class="no-user">
+      <NavBar :end-navs="loginNavs" />
+    </div>
+
+    <div v-else-if="$store.state.currentUserIsAdmin">
+
     </div>
     <router-view />
   </div>
 </template>
+
+<script>
+import NavBar from "@/components/NavBar";
+export default {
+  components: {NavBar},
+  data() {
+    return {
+      loginNavs: [
+        { content: '教师登录', link: '/teacher/login' },
+        { content: '管理员登录', link: '/admin/login' },
+      ],
+      logoutNavs: [
+        {content: '退出登陆', link: ''}
+      ],
+      adminNavs: [
+        { content: '', link: ''}
+      ],
+      teacherNavs: [
+        {content: '教学信息', link: ''},
+        {content: '实验信息', link: ''},
+        {content: '著作信息', link: ''},
+        {content: '论文信息', link: ''},
+        {content: '', link: ''},
+        {content: '', link: ''}
+      ]
+    };
+  },
+};
+</script>
 
 <style>
 #app {

@@ -4,15 +4,12 @@
     :show-register-btn="false"
     title="管理员登录"
     @login="login"
-    @register="register"
   />
 </template>
 
 <script>
-import axios from 'axios';
+import adminLogin from '@/api/admin/adminLogin';
 import LoginForm from '@/components/LoginForm';
-
-import urls from '@/lib/global-variables';
 
 export default {
   name: 'AdminLogin',
@@ -30,25 +27,24 @@ export default {
   },
   methods: {
     async login() {
-      await axios
-        .post(urls.adminLogin, JSON.stringify(this.formData))
-        .then((response) => {
-          switch (response.data.status) {
-            case 'success':
-              this.$store.state.currentUserId = this.formData.username;
-              this.$router.push('/admin-panel');
-              break;
-            case 'user-not-found':
-              this.$router.push('/register');
-              break;
-            case 'err-wrong-password':
-              this.$router.push('/login');
-              break;
-          }
-        });
-    },
-    register() {
-      this.$router.push('/register');
+      await adminLogin(this.formData).then((response) => {
+        console.log(response);
+        switch (response.status) {
+          case 'success':
+            this.$store.commit({
+              type: 'updateCurrentUser',
+              newUser: { id: this.formData.username, isAdmin: true },
+            });
+            this.$router.push('/admin/home');
+            break;
+          case 'user-not-found':
+            this.$router.push('/register');
+            break;
+          case 'err-wrong-password':
+            this.$router.push('/login');
+            break;
+        }
+      });
     },
   },
 };

@@ -6,8 +6,7 @@
 
 <script>
 import UserForm from '@/components/UserForm';
-import axios from 'axios';
-import urls from '@/lib/global-variables';
+import addAdmin from '@/api/admin/addAdmin';
 
 export default {
   name: 'AddAdmin',
@@ -31,15 +30,13 @@ export default {
   },
   methods: {
     async addAdmin() {
-      await axios
-        .post(urls.addAdmin, JSON.stringify(this.adminData))
-        .then((response) => {
-          switch (response.data.status) {
-            case 'success':
-              this.$router.push('/adminManagement');
-              break;
-          }
-        });
+      await addAdmin(this.adminData).then((response) => {
+        switch (response.status) {
+          case 'success':
+            this.$router.push('/admin/manage');
+            break;
+        }
+      });
     },
   },
 };
