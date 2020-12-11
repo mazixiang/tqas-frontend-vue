@@ -2,7 +2,7 @@ import axios from 'axios';
 import urls from '@/api/urls';
 
 export default async function deleteAdmin(id) {
-  let submitData = { admin_id: id };
+  let submitData = { a_id: id };
 
   let tmpResponse = null;
 

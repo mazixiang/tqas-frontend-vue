@@ -20,6 +20,6 @@ export default async function queryAllAdmins() {
 
   return {
     status: tmpResponse.data.status,
-    data: tmpResponse.data.data,
+    data: tmpResponse.data.result,
   };
 }

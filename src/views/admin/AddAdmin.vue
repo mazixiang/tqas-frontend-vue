@@ -19,7 +19,7 @@ export default {
   data() {
     return {
       adminData: {
-        username: '',
+        id: '',
         name: '',
         gender: '男',
         password: '',
@@ -41,5 +41,3 @@ export default {
   },
 };
 </script>
-
-<style scoped></style>

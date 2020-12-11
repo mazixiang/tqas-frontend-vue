@@ -3,8 +3,8 @@ import urls from '@/api/urls';
 
 export default async function login(adminData) {
   let submitData = {
-    username: adminData.username,
-    password: adminData.password,
+    a_id: adminData.id,
+    a_password: adminData.password,
   };
 
   let tmpResponse = null;
@@ -20,6 +20,6 @@ export default async function login(adminData) {
     });
 
   return {
-    status: tmpResponse.data.status
+    status: tmpResponse.data.status,
   };
 }

@@ -1,41 +1,67 @@
 <template>
   <div id="app">
-    <div v-if="$store.state.currentUserId == null" class="no-user">
+    <div v-if="!userLoggedIn">
       <NavBar :end-navs="loginNavs" />
     </div>
 
-    <div v-else-if="$store.state.currentUserIsAdmin">
+    <div v-else-if="userIsAdmin">
+      <NavBar
+        :start-navs="adminNavs"
+        :user-logged-in="userLoggedIn"
+        :user-msg="`你好，管理员 ${this.currentUser}`"
+      />
+    </div>
 
+    <div v-else-if="!userIsAdmin">
+      <NavBar
+        :start-navs="teacherNavs"
+        :user-logged-in="userLoggedIn"
+        :user-msg="`你好，教师 ${this.currentUser}`"
+      />
     </div>
     <router-view />
   </div>
 </template>
 
 <script>
-import NavBar from "@/components/NavBar";
+import NavBar from '@/components/NavBar';
 export default {
-  components: {NavBar},
+  components: { NavBar },
   data() {
     return {
       loginNavs: [
         { content: '教师登录', link: '/teacher/login' },
         { content: '管理员登录', link: '/admin/login' },
       ],
-      logoutNavs: [
-        {content: '退出登陆', link: ''}
-      ],
       adminNavs: [
-        { content: '', link: ''}
+        { content: '教学信息', link: '' },
+        { content: '实验信息', link: '' },
+        { content: '著作信息', link: '' },
+        { content: '论文信息', link: '' },
+        { content: '课题信息', link: '' },
+        { content: '专利信息', link: '' },
+        { content: '系数修改', link: '' },
       ],
       teacherNavs: [
-        {content: '教学信息', link: ''},
-        {content: '实验信息', link: ''},
-        {content: '著作信息', link: ''},
-        {content: '论文信息', link: ''},
-        {content: '', link: ''},
-        {content: '', link: ''}
-      ]
+        { content: '教学信息', link: '' },
+        { content: '实验信息', link: '' },
+        { content: '著作信息', link: '' },
+        { content: '论文信息', link: '' },
+        { content: '课题信息', link: '' },
+        { content: '专利信息', link: '' },
+      ],
     };
+  },
+  computed: {
+    userLoggedIn() {
+      return this.$store.state.currentUserId !== null;
+    },
+    userIsAdmin() {
+      return this.userLoggedIn && this.$store.state.currentUserIsAdmin;
+    },
+    currentUser() {
+      return this.$store.state.currentUserId;
+    },
   },
 };
 </script>
@@ -45,6 +71,7 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  user-select: none;
   text-align: center;
   color: #2c3e50;
   height: 100vh;

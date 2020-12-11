@@ -13,6 +13,7 @@ let paths = {
   register: '/register',
   queryAllAdmins: '/queryAllAdmins',
   queryAdminById: '/queryAdminById',
+  addAdmin: '/addAdmin',
   deleteAdmin: '/deleteAdmin',
   queryAllTeachers: '/queryAllTeachers',
 };

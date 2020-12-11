@@ -10,9 +10,10 @@
           <input
             type="text"
             id="username"
-            v-model="userData.username"
+            v-model="userData.id"
             class="col-md-9 form-control"
             placeholder="输入工号"
+            :disabled="isUpdateForm"
             required
           />
         </div>
@@ -121,6 +122,10 @@ export default {
   props: {
     title: String,
     userData: Object,
+    isUpdateForm: {
+      type: Boolean,
+      default: false,
+    },
   },
 };
 </script>

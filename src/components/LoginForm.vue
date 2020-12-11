@@ -10,7 +10,7 @@
           <input
             type="text"
             id="username"
-            v-model="formData.username"
+            v-model="formData.id"
             class="form-control"
             placeholder="输入用户名"
           />

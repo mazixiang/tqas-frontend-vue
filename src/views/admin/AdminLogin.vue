@@ -20,7 +20,7 @@ export default {
   data() {
     return {
       formData: {
-        username: '',
+        id: '',
         password: '',
       },
     };

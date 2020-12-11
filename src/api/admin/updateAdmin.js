@@ -3,12 +3,12 @@ import urls from '@/api/urls';
 
 export default async function (newAdmin) {
   let submitData = {
-    id: newAdmin.id,
-    name: newAdmin.name,
-    gender: newAdmin.gender,
-    password: newAdmin.password,
-    emailAddress: newAdmin.emailAddress,
-    phoneNumber: newAdmin.phoneNumber,
+    a_id: newAdmin.id,
+    a_name: newAdmin.name,
+    a_gender: newAdmin.gender,
+    a_password: newAdmin.password,
+    a_email: newAdmin.emailAddress,
+    a_phone: newAdmin.phoneNumber,
   };
 
   let tmpResponse = null;

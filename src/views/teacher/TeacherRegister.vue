@@ -20,7 +20,7 @@ export default {
   data() {
     return {
       userData: {
-        username: '',
+        id: '',
         name: '',
         gender: '男',
         password: '',

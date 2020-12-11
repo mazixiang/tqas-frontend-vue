@@ -3,12 +3,12 @@ import urls from '@/api/urls';
 
 export default async function addAdmin(adminData) {
   let submitData = {
-    id: adminData.id,
-    name: adminData.email,
-    gender: adminData.gender,
-    password: adminData.password,
-    emailAddress: adminData.emailAddress,
-    phoneNumber: adminData.phoneNumber,
+    a_id: adminData.id,
+    a_name: adminData.email,
+    a_gender: adminData.gender,
+    a_password: adminData.password,
+    a_email: adminData.emailAddress,
+    a_phone: adminData.phoneNumber,
   };
 
   let tmpResponse = null;

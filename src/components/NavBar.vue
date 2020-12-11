@@ -19,21 +19,33 @@
           主页
         </router-link>
         <ul class="navbar-nav">
-          <li class="nav-item" v-for="(nav, index) in navs" :key="index">
+          <li class="nav-item" v-for="(nav, index) in startNavs" :key="index">
             <router-link :to="nav.link" class="nav-link">
               {{ nav.content }}
             </router-link>
           </li>
         </ul>
 
-        <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
-          <li class="nav-item" v-for="(nav, index) in endNavs" :key="index">
-            <router-link :to="nav.link" class="nav-link">
-              {{ nav.content }}
-            </router-link>
+        <span class="navbar-text flex-row flex-wrap ms-md-auto">
+          {{ userMsg }}
+        </span>
+
+        <ul class="navbar-nav flex-row flex-wrap ms-md-4" v-if="userLoggedIn">
+          <li class="nav-item">
+            <button class="btn btn-link nav-link" @click="$emit('update-user')">
+              修改信息
+            </button>
           </li>
-          <li class="nav-item" v-if="showLogoutBtn">
-            <button class="ntn btn-link" @click="$emit('logout')">退出登录</button>
+          <li class="nav-item">
+            <button class="btn btn-link nav-link" @click="$emit('logout')">
+              退出登录
+            </button>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav flex-row flex-wrap ms-md-4" v-if="!userLoggedIn">
+          <li class="nav-item" v-for="(nav, index) in endNavs" :key="index">
+            <router-link :to="nav.link" class="nav-link">{{ nav.content }}</router-link>
           </li>
         </ul>
       </div>
@@ -45,9 +57,10 @@
 export default {
   name: 'NavBar',
   props: {
-    navs: Array,
+    startNavs: Array,
     endNavs: Array,
-    showLogoutBtn: {
+    userMsg: String,
+    userLoggedIn: {
       type: Boolean,
       default: false,
     },

@@ -29,18 +29,6 @@ export default {
   },
   methods: {
     async refreshTable() {
-      // await axios.get(urls.queryAllAdmins).then((response) => {
-      //   console.log(response);
-      //   switch (response.data.status) {
-      //     case 'success':
-      //       this.admins = response.data.data.slice();
-      //       break;
-      //     case 'err-user-not-login':
-      //       this.$router.push('/login');
-      //       break;
-      //   }
-      // });
-
       await queryAllAdmins().then((response) => {
         switch (response.status) {
           case 'success':
@@ -59,7 +47,7 @@ export default {
       }
     },
     addAdmin() {
-      this.$router.push('/addAdmin');
+      this.$router.push('/admin/add');
     },
     updateAdmin(id) {
       this.$router.push({
