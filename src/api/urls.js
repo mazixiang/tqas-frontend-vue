@@ -11,16 +11,27 @@ let paths = {
   login: '/login',
   adminLogin: '/admin/login',
   register: '/register',
+
+  // admin
   queryAllAdmins: '/queryAllAdmins',
   queryAdminById: '/queryAdminById',
   addAdmin: '/addAdmin',
   deleteAdmin: '/deleteAdmin',
+
+  // teacher
   queryAllTeachers: '/queryAllTeachers',
   queryTeacherById: '/queryTeacherById',
   addTeacher: '/addTeacher',
   deleteTeacher: '/deleteTeacher',
+
+  // coefficient
   updateCoefficient: '/updateCoefficient',
   getCoefficient: '/getCoefficient',
+
+  // message
+  addTeachingMessage: '/addTeachingMessage',
+  deleteTeachingMessage: '/deleteTeachingMessage',
+  queryTeachingMessagesByOwnerId: '/queryTeachingMessagesByOwnerId',
 };
 
 // 根据 base_url 和 paths 生成完整的 url

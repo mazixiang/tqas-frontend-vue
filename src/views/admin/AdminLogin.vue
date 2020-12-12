@@ -33,9 +33,9 @@ export default {
           case 'success':
             this.$store.commit({
               type: 'updateCurrentUser',
-              newUser: { id: this.formData.username, isAdmin: true },
+              newUser: { id: this.formData.id, isAdmin: true },
             });
-            this.$router.push('/admin/home');
+            this.$router.push('/admin');
             break;
           case 'user-not-found':
             this.$router.push('/register');

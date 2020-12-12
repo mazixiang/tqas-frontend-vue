@@ -10,11 +10,18 @@ export default new Vuex.Store({
   },
   mutations: {
     updateCurrentUser(state, newUser) {
+      localStorage.setItem('currentUser', newUser.id);
+      localStorage.setItem('currentUserIsAdmin', newUser.isAdmin);
       state.currentUserId = newUser.id;
       state.currentUserIsAdmin = newUser.isAdmin;
     },
+    userLogout(state) {
+      localStorage.removeItem('currentUser');
+      localStorage.removeItem('currentUserIsAdmin');
+      state.currentUserId = null;
+      state.currentUserIsAdmin = false;
+    },
   },
-  actions: {
-  },
+  actions: {},
   modules: {},
 });

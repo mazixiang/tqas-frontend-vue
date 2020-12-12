@@ -14,7 +14,7 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbar-toggle">
-        <router-link to="/" class="navbar-brand">
+        <router-link :to="homeLink" class="navbar-brand">
           <font-awesome-icon icon="home" />
           主页
         </router-link>
@@ -59,6 +59,7 @@
 export default {
   name: 'NavBar',
   props: {
+    homeLink: String,
     startNavs: Array,
     endNavs: Array,
     userMsg: String,

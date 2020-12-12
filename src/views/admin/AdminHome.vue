@@ -31,12 +31,7 @@ export default {
   },
   methods: {
     async editCoefficient() {
-      await this.$router.push({
-        name: 'updateCoefficient',
-        params: {
-          coefficient: this.coefficient,
-        },
-      });
+      await this.$router.push('/admin/updateCoefficient');
     },
     async manageTeacher() {
       await this.$router.push('/admin/manageTeacher');

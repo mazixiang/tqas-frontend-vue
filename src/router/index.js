@@ -9,16 +9,6 @@ const routes = [
     component: () => import('@/views/Home'),
   },
   {
-    path: '/teacher/login',
-    name: 'Login',
-    component: () => import('@/views/teacher/TeacherLogin'),
-  },
-  {
-    path: '/teacher/register',
-    name: 'Register',
-    component: () => import('@/views/teacher/TeacherRegister'),
-  },
-  {
     path: '/admin',
     component: () => import('@/views/admin/Admin'),
     children: [
@@ -58,12 +48,79 @@ const routes = [
         name: 'TeacherManagement',
         component: () => import('@/views/teacher/TeacherManagement'),
       },
+      {
+        path: 'message',
+        name: 'adminMessage',
+        component: () => import('@/views/message/Message'),
+        children: [
+          {
+            path: 'teaching',
+            name: 'adminTeachingMessage',
+            component: () => import('@/views/message/teaching/TeachingMessage'),
+            children: [
+              {
+                path: 'list',
+                name: 'adminListTeachingMessage',
+                component: () =>
+                  import('@/views/message/teaching/ListTeachingMessage'),
+              },
+            ],
+          },
+        ],
+      },
     ],
   },
   {
-    path: '/teacher/add',
-    name: 'AddTeacher',
-    component: () => import('@/views/teacher/AddTeacher'),
+    path: '/teacher',
+    component: () => import('@/views/teacher/Teacher'),
+    children: [
+      {
+        path: '',
+        name: 'teacherHome',
+        component: () => import('@/views/teacher/TeacherHome'),
+      },
+      {
+        path: 'add',
+        name: 'AddTeacher',
+        component: () => import('@/views/teacher/AddTeacher'),
+      },
+      {
+        path: 'login',
+        name: 'TeacherLogin',
+        component: () => import('@/views/teacher/TeacherLogin'),
+      },
+      {
+        path: 'register',
+        name: 'TeacherRegister',
+        component: () => import('@/views/teacher/TeacherRegister'),
+      },
+      {
+        path: 'message',
+        name: 'Message',
+        component: () => import('@/views/message/Message'),
+        children: [
+          {
+            path: 'teaching',
+            name: 'teachingMessage',
+            component: () => import('@/views/message/teaching/TeachingMessage'),
+            children: [
+              {
+                path: 'list',
+                name: 'listTeachingMessage',
+                component: () =>
+                  import('@/views/message/teaching/ListTeachingMessage'),
+              },
+              {
+                path: 'add',
+                name: 'addTeachingMessage',
+                component: () =>
+                  import('@/views/message/teaching/AddTeachingMessage'),
+              },
+            ],
+          },
+        ],
+      },
+    ],
   },
 ];
 

@@ -1,24 +1,13 @@
 <template>
-  <div id="app">
-    <div v-if="!userLoggedIn">
-      <NavBar :end-navs="loginNavs" />
-    </div>
+  <div class="container-fluid" id="app">
+    <NavBar
+      :start-navs="startNavs"
+      :end-navs="endNavs"
+      :user-logged-in="userLoggedIn"
+      :user-msg="userMsg"
+      :home-link="homeLink"
+    />
 
-    <div v-else-if="userIsAdmin">
-      <NavBar
-        :start-navs="adminNavs"
-        :user-logged-in="userLoggedIn"
-        :user-msg="`你好，管理员 ${this.currentUser}`"
-      />
-    </div>
-
-    <div v-else-if="!userIsAdmin">
-      <NavBar
-        :start-navs="teacherNavs"
-        :user-logged-in="userLoggedIn"
-        :user-msg="`你好，教师 ${this.currentUser}`"
-      />
-    </div>
     <router-view />
   </div>
 </template>
@@ -34,16 +23,17 @@ export default {
         { content: '管理员登录', link: '/admin/login' },
       ],
       adminNavs: [
-        { content: '教学信息', link: '' },
+        { content: '教学信息', link: '/admin/message/teaching/list' },
         { content: '实验信息', link: '' },
         { content: '著作信息', link: '' },
         { content: '论文信息', link: '' },
         { content: '课题信息', link: '' },
         { content: '专利信息', link: '' },
-        { content: '系数修改', link: '' },
+        { content: '系数修改', link: '/admin/updateCoefficient' },
+        { content: '管理教师', link: '/admin/manageTeacher' },
       ],
       teacherNavs: [
-        { content: '教学信息', link: '' },
+        { content: '教学信息', link: '/teacher/message/teaching/list' },
         { content: '实验信息', link: '' },
         { content: '著作信息', link: '' },
         { content: '论文信息', link: '' },
@@ -53,6 +43,40 @@ export default {
     };
   },
   computed: {
+    startNavs() {
+      if (!this.userLoggedIn) {
+        return [];
+      } else if (!this.userIsAdmin) {
+        return this.teacherNavs;
+      } else {
+        return this.adminNavs;
+      }
+    },
+    endNavs() {
+      if (!this.userLoggedIn) {
+        return this.loginNavs;
+      } else {
+        return [];
+      }
+    },
+    userMsg() {
+      if (!this.userLoggedIn) {
+        return '';
+      } else if (!this.userIsAdmin) {
+        return `你好，教师 ${this.currentUser}`;
+      } else {
+        return `你好，管理员 ${this.currentUser}`;
+      }
+    },
+    homeLink() {
+      if (!this.userLoggedIn) {
+        return '/';
+      } else if (!this.userIsAdmin) {
+        return '/teacher';
+      } else {
+        return '/admin';
+      }
+    },
     userLoggedIn() {
       return this.$store.state.currentUserId !== null;
     },
