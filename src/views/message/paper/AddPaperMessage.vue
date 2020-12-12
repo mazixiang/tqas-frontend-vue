@@ -19,7 +19,7 @@ export default {
       paperMessage: {
         id: '',
         ownerId: '',
-        phase: '',
+        periodical: '',
         rank: '',
       },
     };

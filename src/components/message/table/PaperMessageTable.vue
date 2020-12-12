@@ -6,7 +6,7 @@
         <tr>
           <th scope="col">序号</th>
           <th scope="col">拥有者ID</th>
-          <th scope="col">论文阶段</th>
+          <th scope="col">论文期刊</th>
           <th scope="col">论文排名</th>
           <th scope="col" v-if="!isAdmin">操作</th>
         </tr>
@@ -15,7 +15,7 @@
         <tr v-for="(message, index) in paperMessages" :key="index">
           <td>{{ index + 1 }}</td>
           <td>{{ message.ownerId }}</td>
-          <td>{{ message.phase }}</td>
+          <td>{{ message.periodical }}</td>
           <td>{{ message.rank }}</td>
           <td v-if="!isAdmin">
             <button

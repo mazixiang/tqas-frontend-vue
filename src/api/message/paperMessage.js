@@ -7,7 +7,7 @@ function convertMessages(messages) {
     return {
       id: value.id,
       ownerId: value.ownerId,
-      phase: value.phase,
+      periodical: value.phase,
       rank: value.pRank,
     };
   });
@@ -21,7 +21,7 @@ async function addPaperMessage(paperMessage) {
   let submitData = {
     id,
     ownerId: paperMessage.ownerId,
-    phase: paperMessage.phase,
+    phase: paperMessage.periodical,
     pRank: paperMessage.rank,
   };
 
