@@ -66,6 +66,18 @@ const routes = [
               },
             ],
           },
+          {
+            path: 'lab',
+            name: 'AdminLabMessage',
+            component: () => import('@/views/message/lab/LabMessage'),
+            children: [
+              {
+                path: 'list',
+                name: 'AdminListLabMessage',
+                component: () => import('@/views/message/lab/ListLabMessage'),
+              },
+            ],
+          },
         ],
       },
     ],
