@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <IssueMessageTable
-      :issue-messages="messages"
+    <PatentMessageTable
+      :patent-messages="messages"
       :is-admin="currentUserIsAdmin"
       @add-message="addMessage"
       @delete-message="doDelete($event)"
@@ -10,20 +10,18 @@
 </template>
 
 <script>
-import IssueMessageTable from '@/components/message/table/IssueMessageTable';
+import PatentMessageTable from '@/components/message/table/PatentMessageTable';
 import {
-  queryIssueMessagesByOwnerId,
-  deleteIssueMessage,
-  queryAllIssueMessages,
-} from '@/api/message/issueMessage';
+  queryPatentMessagesByOwnerId,
+  deletePatentMessage,
+  queryAllPatentMessages,
+} from '@/api/message/patentMessage';
 
 export default {
-  name: 'ListIssueMessage',
-  components: {
-    IssueMessageTable,
-  },
+  name: 'ListPatentMessage',
+  components: { PatentMessageTable },
   metaInfo: {
-    title: '课题信息',
+    title: '专利信息',
   },
   data() {
     return {
@@ -39,24 +37,25 @@ export default {
     async refreshTable() {
       if (!this.currentUserIsAdmin) {
         let ownerId = this.$store.state.currentUserId;
-        await queryIssueMessagesByOwnerId(ownerId).then((response) => {
+        await queryPatentMessagesByOwnerId(ownerId).then((response) => {
+          switch (response.status) {
+            case 'success':
+              this.messages = response.data.slice;
+              break;
+          }
+        });
+      } else {
+        await queryAllPatentMessages().then((response) => {
           switch (response.status) {
             case 'success':
               this.messages = response.data.slice();
               break;
           }
         });
-      } else {
-        await queryAllIssueMessages().then((response) => {
-          switch (response.status) {
-            case 'success':
-              this.messages = response.data.slice();
-          }
-        });
       }
     },
     async doDelete(messageId) {
-      await deleteIssueMessage(messageId).then((response) => {
+      await deletePatentMessage(messageId).then((response) => {
         switch (response.status) {
           case 'success':
             this.refreshTable();
@@ -65,7 +64,7 @@ export default {
       });
     },
     addMessage() {
-      this.$router.push('/teacher/message/issue/add');
+      this.$router.push('/teacher/message/patent/add');
     },
   },
   async created() {

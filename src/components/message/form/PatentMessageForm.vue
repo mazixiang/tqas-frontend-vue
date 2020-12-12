@@ -1,36 +1,36 @@
 <template>
   <div class="container" id="issue-message-form-container">
     <div class="row d-flex justify-content-center align-items-center my-2">
-      <h2>添加课题信息</h2>
+      <h2>添加专利信息</h2>
     </div>
     <form @submit="$event.preventDefault()">
       <div class="row mb-3 form-group">
         <label for="issue-period" class="col-md-3 col-form-label">
-          课题阶段
+          专利阶段
         </label>
         <div class="col-md-9">
           <input
             type="text"
             id="issue-period"
-            v-model="issueMessage.period"
+            v-model="patentMessage.phase"
             class="col-md-9 form-control"
-            placeholder="输入课题阶段"
+            placeholder="输入专利阶段"
             required
           />
         </div>
       </div>
 
       <div class="row mb-3 form-group">
-        <label for="issue-rank" class="col-md-3 col-form-label">
-          课题排名
+        <label for="patent-rank" class="col-md-3 col-form-label">
+          专利排名
         </label>
         <div class="col-md-9">
           <input
             type="number"
-            id="issue-rank"
-            v-model.number="issueMessage.rank"
+            id="patent-rank"
+            v-model.number="patentMessage.rank"
             class="form-control"
-            placeholder="输入课题排名"
+            placeholder="输入专利排名"
             required
           />
         </div>
@@ -51,9 +51,9 @@
 
 <script>
 export default {
-  name: 'IssueMessageForm',
+  name: 'PatentMessageForm',
   props: {
-    issueMessage: Object,
+    patentMessage: Object,
   },
 };
 </script>

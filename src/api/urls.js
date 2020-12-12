@@ -69,7 +69,13 @@ let paths = {
   addIssueMessage: '/addIssueMessage',
   deleteIssueMessage: '/deleteIssueMessage',
   queryIssueMessageByOwnerId: '/queryIssueMessageByOwnerId',
-  queryIssuePaperMessages: '/queryAllIssueMessages',
+  queryAllIssueMessages: '/queryAllIssueMessages',
+
+  // patent message 专利信息
+  addPatentMessage: '/addPatentMessage',
+  deletePatentMessage: '/deletePatentMessage',
+  queryPatentMessageByOwnerId: '/queryPatentMessageByOwnerId',
+  queryAllPatentMessages: '/queryAllPatentMessages',
 };
 
 // 根据 base_url 和 paths 生成完整的 url

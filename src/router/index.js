@@ -116,6 +116,18 @@ const routes = [
               },
             ],
           },
+          {
+            path: 'patent',
+            component: () => import('@/views/message/issue/IssueMessage'),
+            children: [
+              {
+                path: '',
+                name: 'AdminListPatentMessage',
+                component: () =>
+                  import('@/views/message/patent/ListPatentMessage'),
+              },
+            ],
+          },
         ],
       },
     ],
@@ -237,6 +249,24 @@ const routes = [
                 name: 'AddIssueMessage',
                 component: () =>
                   import('@/views/message/issue/AddIssueMessage'),
+              },
+            ],
+          },
+          {
+            path: 'patent',
+            component: () => import('@/views/message/patent/PatentMessage'),
+            children: [
+              {
+                path: '',
+                name: 'ListPatentMessage',
+                component: () =>
+                  import('@/views/message/patent/ListPatentMessage'),
+              },
+              {
+                path: 'add',
+                name: 'AddPatentMessage',
+                component: () =>
+                  import('@/views/message/patent/AddPatentMessage'),
               },
             ],
           },
