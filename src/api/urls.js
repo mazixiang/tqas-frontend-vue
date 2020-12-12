@@ -64,6 +64,12 @@ let paths = {
   deletePaperMessage: '/deletePaperMessage',
   queryPaperMessageByOwnerId: '/queryPaperMessageByOwnerId',
   queryAllPaperMessages: '/queryAllPaperMessages',
+
+  // issue message 课题信息
+  addIssueMessage: '/addIssueMessage',
+  deleteIssueMessage: '/deleteIssueMessage',
+  queryIssueMessageByOwnerId: '/queryIssueMessageByOwnerId',
+  queryIssuePaperMessages: '/queryAllIssueMessages',
 };
 
 // 根据 base_url 和 paths 生成完整的 url

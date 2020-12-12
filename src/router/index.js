@@ -104,6 +104,18 @@ const routes = [
               },
             ],
           },
+          {
+            path: 'issue',
+            component: () => import('@/views/message/issue/IssueMessage'),
+            children: [
+              {
+                path: '',
+                name: 'AdminListIssueMessage',
+                component: () =>
+                  import('@/views/message/issue/ListIssueMessage'),
+              },
+            ],
+          },
         ],
       },
     ],
@@ -207,6 +219,24 @@ const routes = [
                 name: 'AddPaperMessage',
                 component: () =>
                   import('@/views/message/paper/AddPaperMessage'),
+              },
+            ],
+          },
+          {
+            path: 'issue',
+            component: () => import('@/views/message/issue/IssueMessage'),
+            children: [
+              {
+                path: '',
+                name: 'ListIssueMessage',
+                component: () =>
+                  import('@/views/message/issue/ListIssueMessage'),
+              },
+              {
+                path: 'add',
+                name: 'AddIssueMessage',
+                component: () =>
+                  import('@/views/message/issue/AddIssueMessage'),
               },
             ],
           },

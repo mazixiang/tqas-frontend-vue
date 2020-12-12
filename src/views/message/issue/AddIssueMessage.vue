@@ -1,22 +1,22 @@
 <template>
   <div class="container">
-    <PaperMessageForm :paper-message="paperMessage" @submit="doSubmit" />
+    <IssueMessageForm :issue-message="issueMessage" @submit="doSubmit" />
   </div>
 </template>
 
 <script>
-import PaperMessageForm from '@/components/message/form/PaperMessageForm';
-import { addPaperMessage } from '@/api/message/paperMessage';
+import IssueMessageForm from '@/components/message/form/IssueMessageForm';
+import { addIssueMessage } from '@/api/message/issueMessage';
 
 export default {
-  name: 'AddPaperMessage',
-  components: { PaperMessageForm },
+  name: 'AddIssueMessage',
+  components: { IssueMessageForm },
   metaInfo: {
-    title: '添加论文信息',
+    title: '添加课题信息',
   },
   data() {
     return {
-      paperMessage: {
+      issueMessage: {
         id: '',
         ownerId: '',
         phase: '',
@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     async doSubmit() {
-      await addPaperMessage(this.paperMessage).then((response) => {
+      await addIssueMessage(this.issueMessage).then((response) => {
         switch (response.status) {
           case 'success':
             this.$router.back();
