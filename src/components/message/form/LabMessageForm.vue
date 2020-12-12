@@ -5,13 +5,11 @@
     </div>
     <form @submit="$event.preventDefault()">
       <div class="row mb-3 form-group">
-        <label for="course-name" class="col-md-3 col-form-label">
-          实验名称
-        </label>
+        <label for="lab-name" class="col-md-3 col-form-label"> 实验名称 </label>
         <div class="col-md-9">
           <input
             type="text"
-            id="course-name"
+            id="lab-name"
             v-model="labMessage.courseName"
             class="col-md-9 form-control"
             placeholder="输入实验名称"
@@ -21,13 +19,11 @@
       </div>
 
       <div class="row mb-3 form-group">
-        <label for="course-period" class="col-md-3 col-form-label"
-          >实验学时</label
-        >
+        <label for="lab-period" class="col-md-3 col-form-label">实验学时</label>
         <div class="col-md-9">
           <input
             type="text"
-            id="course-period"
+            id="lab-period"
             v-model="labMessage.coursePeriod"
             class="col-md-9 form-control"
             placeholder="输入实验学时"

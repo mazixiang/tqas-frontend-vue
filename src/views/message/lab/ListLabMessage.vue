@@ -14,26 +14,43 @@ import LabMessageTable from '@/components/message/table/LabMessageTable';
 import {
   deleteLabMessage,
   queryLabMessagesByOwnerId,
+  queryAllLabMessages,
 } from '@/api/message/labMessage';
 
 export default {
   name: 'ListLabMessage',
+  metaInfo: { title: '实验信息' },
   components: { LabMessageTable },
   data() {
     return {
       messages: [],
     };
   },
+  computed: {
+    currentUserIsAdmin() {
+      return this.$store.state.currentUserIsAdmin;
+    },
+  },
   methods: {
     async refreshTable() {
-      let ownId = this.$store.state.currentUserId;
-      await queryLabMessagesByOwnerId(ownId).then((response) => {
-        switch (response.status) {
-          case 'success':
-            this.messages = response.data.slice();
-            break;
-        }
-      });
+      if (!this.currentUserIsAdmin) {
+        let ownerId = this.$store.state.currentUserId;
+        await queryLabMessagesByOwnerId(ownerId).then((response) => {
+          switch (response.status) {
+            case 'success':
+              this.messages = response.data.slice();
+              break;
+          }
+        });
+      } else {
+        await queryAllLabMessages().then((response) => {
+          switch (response.status) {
+            case 'success':
+              this.messages = response.data.slice();
+              break;
+          }
+        });
+      }
     },
     async doDelete(messageId) {
       await deleteLabMessage(messageId).then((response) => {
@@ -50,11 +67,6 @@ export default {
   },
   async created() {
     await this.refreshTable();
-  },
-  computed: {
-    currentUserIsAdmin() {
-      return this.$store.state.currentUserIsAdmin;
-    },
   },
 };
 </script>

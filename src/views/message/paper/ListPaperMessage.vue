@@ -1,35 +1,43 @@
 <template>
   <div class="container">
-    <WorkMessageTable
-      :work-messages="messages"
+    <PaperMessageTable
+      :paper-messages="messages"
       :is-admin="currentUserIsAdmin"
-      @add-message="$router.push('/teacher/message/work/add')"
+      @add-message="addMessage"
+      @delete-message="doDelete($event)"
     />
   </div>
 </template>
 
 <script>
-import WorkMessageTable from '@/components/message/table/WorkMessageTable';
+import PaperMessageTable from '@/components/message/table/PaperMessageTable';
 import {
-  queryWorkMessagesByOwnerId,
-  deleteWorkMessage,
-  queryAllWorkMessages,
-} from '@/api/message/workMessage';
+  queryPaperMessagesByOwnerId,
+  deletePaperMessage,
+  queryAllPaperMessages,
+} from '@/api/message/paperMessage';
 
 export default {
-  name: 'ListWorkMessage',
-  metaInfo: { title: '著作信息' },
-  components: { WorkMessageTable },
+  name: 'ListPaperMessage',
+  metaInfo: {
+    title: '论文信息',
+  },
+  components: { PaperMessageTable },
   data() {
     return {
       messages: [],
     };
   },
+  computed: {
+    currentUserIsAdmin() {
+      return this.$store.state.currentUserIsAdmin;
+    },
+  },
   methods: {
     async refreshTable() {
       if (!this.currentUserIsAdmin) {
         let ownerId = this.$store.state.currentUserId;
-        await queryWorkMessagesByOwnerId(ownerId).then((response) => {
+        await queryPaperMessagesByOwnerId(ownerId).then((response) => {
           switch (response.status) {
             case 'success':
               this.messages = response.data.slice();
@@ -37,7 +45,7 @@ export default {
           }
         });
       } else {
-        await queryAllWorkMessages().then((response) => {
+        await queryAllPaperMessages().then((response) => {
           switch (response.status) {
             case 'success':
               this.messages = response.data.slice();
@@ -47,7 +55,7 @@ export default {
       }
     },
     async doDelete(messageId) {
-      await deleteWorkMessage(messageId).then((response) => {
+      await deletePaperMessage(messageId).then((response) => {
         switch (response.status) {
           case 'success':
             this.refreshTable();
@@ -55,14 +63,12 @@ export default {
         }
       });
     },
+    addMessage() {
+      this.$router.push('/teacher/message/paper/add');
+    },
   },
   async created() {
     await this.refreshTable();
-  },
-  computed: {
-    currentUserIsAdmin() {
-      return this.$store.state.currentUserIsAdmin;
-    },
   },
 };
 </script>

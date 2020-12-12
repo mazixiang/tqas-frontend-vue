@@ -35,9 +35,6 @@ export default {
           case 'err-user-not-login':
             this.$router.push('/login');
             break;
-          case 'err-user-not-admin':
-            // TODO 未完成判断 User 是管理员的部分
-            break;
         }
       });
     },
@@ -49,7 +46,7 @@ export default {
         switch (response.status) {
           // TODO 修改管理教师页面的路径
           case 'success':
-            this.$router.push('/teacherManagement');
+            this.refreshTable();
             break;
         }
       });

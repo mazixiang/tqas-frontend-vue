@@ -8,6 +8,7 @@ let base_urls = {
 let base_url = base_urls.test_url;
 
 let paths = {
+  // 注册登录
   login: '/login',
   adminLogin: '/admin/login',
   register: '/register',
@@ -53,10 +54,16 @@ let paths = {
   queryAllLabMessages: '/queryAllLabMessages',
 
   // work message 著作信息
-  getWorkMessage: '/getWorkMessage',
+  addWorkMessage: '/addWorkMessage',
   deleteWorkMessage: '/deleteWorkMessage',
   queryWorkMessageByOwnerId: '/queryWorkMessageByOwnerId',
   queryAllWorkMessages: '/queryAllWorkMessages',
+
+  // paper message 论文信息
+  addPaperMessage: '/addPaperMessage',
+  deletePaperMessage: '/deletePaperMessage',
+  queryPaperMessageByOwnerId: '/queryPaperMessageByOwnerId',
+  queryAllPaperMessages: '/queryAllPaperMessages',
 };
 
 // 根据 base_url 和 paths 生成完整的 url

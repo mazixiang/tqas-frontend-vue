@@ -18,7 +18,7 @@ import {
 
 export default {
   name: 'ListTeachingMessage',
-  metaInfo: {title: '查看教学信息'},
+  metaInfo: {title: '教学信息'},
   components: { TeachingMessageTable },
   data() {
     return { messages: [] };

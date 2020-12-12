@@ -18,6 +18,11 @@ const routes = [
         component: () => import('@/views/admin/AdminHome'),
       },
       {
+        path: 'updateTeacher',
+        name: 'AdminUpdateTeacher',
+        component: () => import('@/views/teacher/UpdateTeacher'),
+      },
+      {
         path: 'updateCoefficient',
         name: 'updateCoefficient',
         component: () => import('@/views/admin/UpdateCoefficient'),
@@ -46,7 +51,7 @@ const routes = [
       {
         path: 'manageTeacher',
         name: 'TeacherManagement',
-        component: () => import('@/views/teacher/TeacherManagement'),
+        component: () => import('@/views/admin/TeacherManagement'),
       },
       {
         path: 'message',
@@ -55,11 +60,10 @@ const routes = [
         children: [
           {
             path: 'teaching',
-            name: 'adminTeachingMessage',
             component: () => import('@/views/message/teaching/TeachingMessage'),
             children: [
               {
-                path: 'list',
+                path: '',
                 name: 'adminListTeachingMessage',
                 component: () =>
                   import('@/views/message/teaching/ListTeachingMessage'),
@@ -68,11 +72,10 @@ const routes = [
           },
           {
             path: 'lab',
-            name: 'AdminLabMessage',
             component: () => import('@/views/message/lab/LabMessage'),
             children: [
               {
-                path: 'list',
+                path: '',
                 name: 'AdminListLabMessage',
                 component: () => import('@/views/message/lab/ListLabMessage'),
               },
@@ -80,14 +83,25 @@ const routes = [
           },
           {
             path: 'work',
-            name: 'AdminWorkMessage',
             component: () => import('@/views/message/work/WorkMessage'),
             children: [
               {
-                path: 'list',
+                path: '',
                 name: 'AdminListWorkMessage',
                 component: () => import('@/views/message/work/ListWorkMessage'),
-              }
+              },
+            ],
+          },
+          {
+            path: 'paper',
+            component: () => import('@/views/message/paper/PaperMessage'),
+            children: [
+              {
+                path: '',
+                name: 'AdminListPaperMessage',
+                component: () =>
+                  import('@/views/message/paper/ListPaperMessage'),
+              },
             ],
           },
         ],
@@ -109,6 +123,11 @@ const routes = [
         component: () => import('@/views/teacher/AddTeacher'),
       },
       {
+        path: 'update',
+        name: 'updateTeacher',
+        component: () => import('@/views/teacher/UpdateTeacher'),
+      },
+      {
         path: 'login',
         name: 'TeacherLogin',
         component: () => import('@/views/teacher/TeacherLogin'),
@@ -125,11 +144,10 @@ const routes = [
         children: [
           {
             path: 'teaching',
-            name: 'teachingMessage',
             component: () => import('@/views/message/teaching/TeachingMessage'),
             children: [
               {
-                path: 'list',
+                path: '',
                 name: 'ListTeachingMessage',
                 component: () =>
                   import('@/views/message/teaching/ListTeachingMessage'),
@@ -144,11 +162,10 @@ const routes = [
           },
           {
             path: 'lab',
-            name: 'labMessage',
             component: () => import('@/views/message/lab/LabMessage'),
             children: [
               {
-                path: 'list',
+                path: '',
                 name: 'ListLabMessage',
                 component: () => import('@/views/message/lab/ListLabMessage'),
               },
@@ -161,11 +178,10 @@ const routes = [
           },
           {
             path: 'work',
-            name: 'workMessage',
             component: () => import('@/views/message/work/WorkMessage'),
             children: [
               {
-                path: 'list',
+                path: '',
                 name: 'ListWorkMessage',
                 component: () => import('@/views/message/work/ListWorkMessage'),
               },
@@ -173,6 +189,24 @@ const routes = [
                 path: 'add',
                 name: 'AddWorkMessage',
                 component: () => import('@/views/message/work/AddWorkMessage'),
+              },
+            ],
+          },
+          {
+            path: 'paper',
+            component: () => import('@/views/message/paper/PaperMessage'),
+            children: [
+              {
+                path: '',
+                name: 'ListPaperMessage',
+                component: () =>
+                  import('@/views/message/paper/ListPaperMessage'),
+              },
+              {
+                path: 'add',
+                name: 'AddPaperMessage',
+                component: () =>
+                  import('@/views/message/paper/AddPaperMessage'),
               },
             ],
           },

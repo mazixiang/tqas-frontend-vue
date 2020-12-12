@@ -6,6 +6,7 @@
       :user-logged-in="userLoggedIn"
       :user-msg="userMsg"
       :home-link="homeLink"
+      @update-user="goUpdate"
     />
 
     <router-view />
@@ -23,24 +24,36 @@ export default {
         { content: '管理员登录', link: '/admin/login' },
       ],
       adminNavs: [
-        { content: '教学信息', link: '/admin/message/teaching/list' },
-        { content: '实验信息', link: '/admin/message/lab/list' },
-        { content: '著作信息', link: '/admin/message/work/list' },
-        { content: '论文信息', link: '/admin/message/paper/list' },
-        { content: '课题信息', link: '/admin/message/paper/list' },
-        { content: '专利信息', link: '/admin/message/paper/list' },
+        { content: '教学信息', link: '/admin/message/teaching' },
+        { content: '实验信息', link: '/admin/message/lab' },
+        { content: '著作信息', link: '/admin/message/work' },
+        { content: '论文信息', link: '/admin/message/paper' },
+        { content: '课题信息', link: '/admin/message/paper' },
+        { content: '专利信息', link: '/admin/message/paper' },
         { content: '系数修改', link: '/admin/updateCoefficient' },
         { content: '管理教师', link: '/admin/manageTeacher' },
       ],
       teacherNavs: [
-        { content: '教学信息', link: '/teacher/message/teaching/list' },
-        { content: '实验信息', link: '/teacher/message/lab/list' },
-        { content: '著作信息', link: '/teacher/message/work/list' },
-        { content: '论文信息', link: '/teacher/message/paper/list' },
-        { content: '课题信息', link: '/teacher/message/issue/list' },
-        { content: '专利信息', link: '/teacher/message/patent/list' },
+        { content: '教学信息', link: '/teacher/message/teaching' },
+        { content: '实验信息', link: '/teacher/message/lab' },
+        { content: '著作信息', link: '/teacher/message/work' },
+        { content: '论文信息', link: '/teacher/message/paper' },
+        { content: '课题信息', link: '/teacher/message/issue' },
+        { content: '专利信息', link: '/teacher/message/patent' },
       ],
     };
+  },
+  methods: {
+    goUpdate() {
+      let nextRoute = this.userIsAdmin ? 'updateAdmin' : 'updateTeacher';
+
+      this.$router.push({
+        name: nextRoute,
+        params: {
+          id: this.$store.state.currentUserId,
+        },
+      });
+    },
   },
   computed: {
     startNavs() {
