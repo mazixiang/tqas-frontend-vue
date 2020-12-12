@@ -1,24 +1,24 @@
 <template>
   <div class="container">
-    <TeachingMessageForm :teaching-message="teachingMessage" @submit="doAdd" />
+    <LabMessageForm :lab-message="labMessage" @submit="doAdd" />
   </div>
 </template>
 
 <script>
-import TeachingMessageForm from '@/components/message/form/TeachingMessageForm';
-import { addTeachingMessage } from '@/api/message/teachingMessage';
+import LabMessageForm from '@/components/message/form/LabMessageForm';
+import { addLabMessage } from '@/api/message/labMessage';
 
 export default {
-  name: 'AddTeachingMessage',
+  name: 'AddLabMessage',
   metaInfo: {
-    title: '教学信息添加',
+    title: '实验信息添加',
   },
   components: {
-    TeachingMessageForm,
+    LabMessageForm,
   },
   data() {
     return {
-      teachingMessage: {
+      labMessage: {
         id: '',
         ownerId: '',
         courseName: '',
@@ -30,16 +30,13 @@ export default {
   },
   methods: {
     async doAdd() {
-      await addTeachingMessage(this.teachingMessage).then((response) => {
+      await addLabMessage(this.labMessage).then((response) => {
         switch (response.status) {
           case 'success':
             this.$router.back();
-            break;
         }
       });
     },
   },
 };
 </script>
-
-<style scoped></style>

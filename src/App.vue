@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid" id="app">
+  <div class="container-fluid px-0" id="app">
     <NavBar
       :start-navs="startNavs"
       :end-navs="endNavs"
@@ -34,11 +34,11 @@ export default {
       ],
       teacherNavs: [
         { content: '教学信息', link: '/teacher/message/teaching/list' },
-        { content: '实验信息', link: '' },
-        { content: '著作信息', link: '' },
-        { content: '论文信息', link: '' },
-        { content: '课题信息', link: '' },
-        { content: '专利信息', link: '' },
+        { content: '实验信息', link: '/teacher/message/lab/list' },
+        { content: '著作信息', link: '/teacher/message/work/list' },
+        { content: '论文信息', link: '/teacher/message/paper/list' },
+        { content: '课题信息', link: '/teacher/message/issue/list' },
+        { content: '专利信息', link: '/teacher/message/patent/list' },
       ],
     };
   },
@@ -99,19 +99,6 @@ export default {
   text-align: center;
   color: #2c3e50;
   height: 100vh;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  text-decoration: none;
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+  width: 100vw;
 }
 </style>

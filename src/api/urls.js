@@ -29,9 +29,18 @@ let paths = {
   getCoefficient: '/getCoefficient',
 
   // message
+
+  // teaching message
   addTeachingMessage: '/addTeachingMessage',
   deleteTeachingMessage: '/deleteTeachingMessage',
   queryTeachingMessagesByOwnerId: '/queryTeachingMessagesByOwnerId',
+  queryAllTeachingMessages: '/queryAllTeachingMessages',
+
+  // lab message
+  addLabMessage: '/addLabMessage',
+  deleteLabMessage: '/deleteLabMessage',
+  queryLabMessageByOwnerId: '/queryLabMessageByOwnerId',
+  queryAllLabMessages: '/queryAllLabMessages',
 };
 
 // 根据 base_url 和 paths 生成完整的 url

@@ -1,20 +1,20 @@
 <template>
-  <div class="container" id="teaching-message-form-container">
+  <div class="container" id="lab-message-form-container">
     <div class="row d-flex justify-content-center align-items-center my-2">
-      <h2>添加教学信息</h2>
+      <h2>添加实验信息</h2>
     </div>
     <form @submit="$event.preventDefault()">
       <div class="row mb-3 form-group">
         <label for="course-name" class="col-md-3 col-form-label">
-          课程名称
+          实验名称
         </label>
         <div class="col-md-9">
           <input
             type="text"
             id="course-name"
-            v-model="teachingMessage.courseName"
+            v-model="labMessage.courseName"
             class="col-md-9 form-control"
-            placeholder="输入课程名称"
+            placeholder="输入实验名称"
             required
           />
         </div>
@@ -22,15 +22,15 @@
 
       <div class="row mb-3 form-group">
         <label for="course-period" class="col-md-3 col-form-label"
-          >课程学时</label
+          >实验学时</label
         >
         <div class="col-md-9">
           <input
             type="text"
             id="course-period"
-            v-model="teachingMessage.coursePeriod"
+            v-model="labMessage.coursePeriod"
             class="col-md-9 form-control"
-            placeholder="输入课程学时"
+            placeholder="输入实验学时"
             required
           />
         </div>
@@ -42,7 +42,7 @@
           <input
             type="text"
             id="class-name"
-            v-model="teachingMessage.className"
+            v-model="labMessage.className"
             class="col-md-9 form-control"
             placeholder="输入班级名称"
             required
@@ -56,7 +56,7 @@
           <input
             type="text"
             id="class-size"
-            v-model="teachingMessage.classSize"
+            v-model="labMessage.classSize"
             class="col-md-9 form-control"
             placeholder="输入班级人数"
             required
@@ -79,15 +79,15 @@
 
 <script>
 export default {
-  name: 'TeachingMsgForm',
+  name: 'LabMessageForm',
   props: {
-    teachingMessage: Object,
+    labMessage: Object,
   },
 };
 </script>
 
 <style scoped>
-#teaching-message-form-container {
+#lab-message-form-container {
   width: 450px;
 }
 </style>

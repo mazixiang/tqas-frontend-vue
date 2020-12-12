@@ -106,15 +106,32 @@ const routes = [
             children: [
               {
                 path: 'list',
-                name: 'listTeachingMessage',
+                name: 'ListTeachingMessage',
                 component: () =>
                   import('@/views/message/teaching/ListTeachingMessage'),
               },
               {
                 path: 'add',
-                name: 'addTeachingMessage',
+                name: 'AddTeachingMessage',
                 component: () =>
                   import('@/views/message/teaching/AddTeachingMessage'),
+              },
+            ],
+          },
+          {
+            path: 'lab',
+            name: 'labMessage',
+            component: () => import('@/views/message/lab/LabMessage'),
+            children: [
+              {
+                path: 'list',
+                name: 'ListLabMessage',
+                component: () => import('@/views/message/lab/ListLabMessage'),
+              },
+              {
+                path: 'add',
+                name: 'AddLabMessage',
+                component: () => import('@/views/message/lab/AddLabMessage'),
               },
             ],
           },
@@ -128,6 +145,7 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes,
+  linkActiveClass: 'active',
 });
 
 // router.beforeEach((to, from, next) => {
