@@ -6,7 +6,10 @@
 
 <script>
 export default {
-  name: "TeacherHome"
+  name: "TeacherHome",
+  metaInfo: {
+    title: '教师主页',
+  },
 }
 </script>
 
