@@ -78,6 +78,18 @@ const routes = [
               },
             ],
           },
+          {
+            path: 'work',
+            name: 'AdminWorkMessage',
+            component: () => import('@/views/message/work/WorkMessage'),
+            children: [
+              {
+                path: 'list',
+                name: 'AdminListWorkMessage',
+                component: () => import('@/views/message/work/ListWorkMessage'),
+              }
+            ],
+          },
         ],
       },
     ],
@@ -144,6 +156,23 @@ const routes = [
                 path: 'add',
                 name: 'AddLabMessage',
                 component: () => import('@/views/message/lab/AddLabMessage'),
+              },
+            ],
+          },
+          {
+            path: 'work',
+            name: 'workMessage',
+            component: () => import('@/views/message/work/WorkMessage'),
+            children: [
+              {
+                path: 'list',
+                name: 'ListWorkMessage',
+                component: () => import('@/views/message/work/ListWorkMessage'),
+              },
+              {
+                path: 'add',
+                name: 'AddWorkMessage',
+                component: () => import('@/views/message/work/AddWorkMessage'),
               },
             ],
           },

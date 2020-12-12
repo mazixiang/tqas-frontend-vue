@@ -12,35 +12,51 @@ let paths = {
   adminLogin: '/admin/login',
   register: '/register',
 
-  // admin
+  // admin 管理员
   queryAllAdmins: '/queryAllAdmins',
   queryAdminById: '/queryAdminById',
   addAdmin: '/addAdmin',
   deleteAdmin: '/deleteAdmin',
+  updateAdmin: '/updateAdmin',
 
-  // teacher
+  // teacher 教师
   queryAllTeachers: '/queryAllTeachers',
   queryTeacherById: '/queryTeacherById',
   addTeacher: '/addTeacher',
   deleteTeacher: '/deleteTeacher',
+  updateTeacher: 'updateTeacher',
 
-  // coefficient
+  // workload 工作量
+  getTeachingWorkload: '/getTeachingWorkload',
+  getLabWorkload: '/getLabWorkload',
+  getWorkWorkload: '/getWorkWorkload',
+  getIssueWorkload: '/getIssueWorkload',
+  getPatentWorkload: '/getPatentWorkload',
+  getPaperWorkload: '/getPaperWorkload',
+
+  // coefficient 系数
   updateCoefficient: '/updateCoefficient',
   getCoefficient: '/getCoefficient',
 
-  // message
+  // message 信息
 
-  // teaching message
+  // teaching message 教学信息
   addTeachingMessage: '/addTeachingMessage',
   deleteTeachingMessage: '/deleteTeachingMessage',
   queryTeachingMessagesByOwnerId: '/queryTeachingMessagesByOwnerId',
   queryAllTeachingMessages: '/queryAllTeachingMessages',
 
-  // lab message
+  // lab message 实验信息
   addLabMessage: '/addLabMessage',
   deleteLabMessage: '/deleteLabMessage',
   queryLabMessageByOwnerId: '/queryLabMessageByOwnerId',
   queryAllLabMessages: '/queryAllLabMessages',
+
+  // work message 著作信息
+  getWorkMessage: '/getWorkMessage',
+  deleteWorkMessage: '/deleteWorkMessage',
+  queryWorkMessageByOwnerId: '/queryWorkMessageByOwnerId',
+  queryAllWorkMessages: '/queryAllWorkMessages',
 };
 
 // 根据 base_url 和 paths 生成完整的 url

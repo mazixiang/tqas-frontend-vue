@@ -24,11 +24,11 @@ export default {
       ],
       adminNavs: [
         { content: '教学信息', link: '/admin/message/teaching/list' },
-        { content: '实验信息', link: '' },
-        { content: '著作信息', link: '' },
-        { content: '论文信息', link: '' },
-        { content: '课题信息', link: '' },
-        { content: '专利信息', link: '' },
+        { content: '实验信息', link: '/admin/message/lab/list' },
+        { content: '著作信息', link: '/admin/message/work/list' },
+        { content: '论文信息', link: '/admin/message/paper/list' },
+        { content: '课题信息', link: '/admin/message/paper/list' },
+        { content: '专利信息', link: '/admin/message/paper/list' },
         { content: '系数修改', link: '/admin/updateCoefficient' },
         { content: '管理教师', link: '/admin/manageTeacher' },
       ],
@@ -100,5 +100,13 @@ export default {
   color: #2c3e50;
   height: 100vh;
   width: 100vw;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+input[type='number'] {
+  -moz-appearance: textfield;
 }
 </style>

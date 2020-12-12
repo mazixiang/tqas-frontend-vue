@@ -1,26 +1,23 @@
 <template>
   <div class="container">
-    <h2>实验信息列表</h2>
+    <h2>著作信息列表</h2>
     <table class="table">
       <thead>
         <tr>
           <th scope="col">序号</th>
           <th scope="col">拥有者ID</th>
-          <th scope="col">实验名称</th>
-          <th scope="col">实验学时</th>
-          <th scope="col">班级名称</th>
-          <th scope="col">班级人数</th>
+          <th scope="col">日期</th>
+          <th scope="col">排名</th>
           <th scope="col" v-if="!isAdmin">操作</th>
         </tr>
       </thead>
+
       <tbody>
-        <tr v-for="(message, index) in labMessages" :key="index">
+        <tr v-for="(message, index) in workMessages" :key="index">
           <td>{{ index + 1 }}</td>
           <td>{{ message.ownerId }}</td>
-          <td>{{ message.courseName }}</td>
-          <td>{{ message.coursePeriod }}</td>
-          <td>{{ message.className }}</td>
-          <td>{{ message.classSize }}</td>
+          <td>{{ message.date }}</td>
+          <td>{{ message.rank }}</td>
           <td v-if="!isAdmin">
             <button
               class="btn btn-outline-danger btn-sm btn-operation"
@@ -37,7 +34,7 @@
       <div class="col-md-2">
         <button class="btn btn-outline-info" @click="$emit('add-message')">
           <font-awesome-icon icon="plus" />
-          添加实验信息
+          添加著作信息
         </button>
       </div>
     </div>
@@ -46,9 +43,9 @@
 
 <script>
 export default {
-  name: 'LabMessageTable',
+  name: 'WorkMessageTable',
   props: {
-    labMessages: Array,
+    workMessages: Array,
     isAdmin: {
       type: Boolean,
       default: false,

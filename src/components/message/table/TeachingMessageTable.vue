@@ -37,7 +37,7 @@
       <div class="col-md-2">
         <button class="btn btn-outline-info" @click="$emit('add-message')">
           <font-awesome-icon icon="plus" />
-          添加教学记录
+          添加教学信息
         </button>
       </div>
     </div>
