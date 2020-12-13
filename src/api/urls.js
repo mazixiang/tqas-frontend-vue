@@ -9,9 +9,9 @@ let base_url = base_urls.server_url;
 
 let paths = {
   // 注册登录
-  teacherLogin: '/login',
+  teacherLogin: '/teacherLoginServlet',
   adminLogin: '/adminLogin',
-  register: '/register',
+  register: '/insertTeacher.hrb',
 
   // admin 管理员
   queryAllAdmins: '/queryAllAdmin.hrb',
@@ -42,40 +42,34 @@ let paths = {
   // message 信息
 
   // teaching message 教学信息
-  addTeachingMessage: '/addTeachingMessage',
+  addTeachingMessage: '/insertTeachingMessage',
   deleteTeachingMessage: '/deleteTeachingMessage',
-  queryTeachingMessagesByOwnerId: '/queryTeachingMessagesByOwnerId',
-  queryAllTeachingMessages: '/queryAllTeachingMessages',
+  queryAllTeachingMessages: '/teachingMessageList',
 
   // lab message 实验信息
-  addLabMessage: '/addLabMessage',
-  deleteLabMessage: '/deleteLabMessage',
-  queryLabMessageByOwnerId: '/queryLabMessageByOwnerId',
-  queryAllLabMessages: '/queryAllLabMessages',
+  addLabMessage: '/insertShiYan',
+  deleteLabMessage: '/deleteShiYan',
+  queryAllLabMessages: '/shiYanList',
 
   // work message 著作信息
-  addWorkMessage: '/addWorkMessage',
-  deleteWorkMessage: '/deleteWorkMessage',
-  queryWorkMessageByOwnerId: '/queryWorkMessageByOwnerId',
-  queryAllWorkMessages: '/queryAllWorkMessages',
+  addWorkMessage: '/insertZhuZuo',
+  deleteWorkMessage: '/deleteZhuZuo',
+  queryAllWorkMessages: '/zhuZuoList',
 
   // paper message 论文信息
-  addPaperMessage: '/addPaperMessage',
-  deletePaperMessage: '/deletePaperMessage',
-  queryPaperMessageByOwnerId: '/queryPaperMessageByOwnerId',
-  queryAllPaperMessages: '/queryAllPaperMessages',
+  addPaperMessage: '/insertPaper',
+  deletePaperMessage: '/deletePaper',
+  queryAllPaperMessages: '/paperList',
 
   // issue message 课题信息
-  addIssueMessage: '/addIssueMessage',
-  deleteIssueMessage: '/deleteIssueMessage',
-  queryIssueMessageByOwnerId: '/queryIssueMessageByOwnerId',
-  queryAllIssueMessages: '/queryAllIssueMessages',
+  addIssueMessage: '/insertTopic',
+  deleteIssueMessage: '/deleteTopic',
+  queryAllIssueMessages: '/topicList',
 
   // patent message 专利信息
-  addPatentMessage: '/addPatentMessage',
-  deletePatentMessage: '/deletePatentMessage',
-  queryPatentMessageByOwnerId: '/queryPatentMessageByOwnerId',
-  queryAllPatentMessages: '/queryAllPatentMessages',
+  addPatentMessage: '/insertPatent',
+  deletePatentMessage: '/deletePatent',
+  queryAllPatentMessages: '/patentList',
 };
 
 // 根据 base_url 和 paths 生成完整的 url
