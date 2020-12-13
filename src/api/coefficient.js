@@ -27,12 +27,12 @@ async function getCoefficient() {
 
 async function updateCoefficient(newCoefficient, adminId) {
   let submitData = {
-    teach: newCoefficient.teach,
-    lab: newCoefficient.lab,
-    work: newCoefficient.work,
-    paper: newCoefficient.paper,
-    issue: newCoefficient.issue,
-    patent: newCoefficient.patent,
+    teach_coe: newCoefficient.teach,
+    lab_coe: newCoefficient.lab,
+    work_coe: newCoefficient.work,
+    paper_coe: newCoefficient.paper,
+    issue_coe: newCoefficient.issue,
+    patents_coe: newCoefficient.patent,
     date: moment().format('YYYY-MM-DD'),
     adminId: adminId,
   };

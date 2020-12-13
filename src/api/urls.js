@@ -5,39 +5,39 @@ let base_urls = {
   server_url: 'http://localhost:7999',
 };
 
-let base_url = base_urls.test_url;
+let base_url = base_urls.server_url;
 
 let paths = {
   // 注册登录
-  login: '/login',
-  adminLogin: '/admin/login',
+  teacherLogin: '/login',
+  adminLogin: '/adminLogin',
   register: '/register',
 
   // admin 管理员
-  queryAllAdmins: '/queryAllAdmins',
-  queryAdminById: '/queryAdminById',
-  addAdmin: '/addAdmin',
-  deleteAdmin: '/deleteAdmin',
-  updateAdmin: '/updateAdmin',
+  queryAllAdmins: '/queryAllAdmin.hrb',
+  queryAdminById: '/queryByIDAdmin.hrb',
+  addAdmin: '/insertAdmin.hrb',
+  deleteAdmin: '/deleteAdmin.hrb',
+  updateAdmin: '/updateAdmin.hrb',
 
   // teacher 教师
-  queryAllTeachers: '/queryAllTeachers',
-  queryTeacherById: '/queryTeacherById',
-  addTeacher: '/addTeacher',
-  deleteTeacher: '/deleteTeacher',
-  updateTeacher: 'updateTeacher',
+  queryAllTeachers: '/queryAllTeacher.hrb',
+  queryTeacherById: '/queryByIDTeacher.hrb',
+  addTeacher: '/insertTeacher.hrb',
+  deleteTeacher: '/deleteTeacher.hrb',
+  updateTeacher: '/updateTeacher.hrb',
 
   // workload 工作量
-  getTeachingWorkload: '/getTeachingWorkload',
-  getLabWorkload: '/getLabWorkload',
-  getWorkWorkload: '/getWorkWorkload',
-  getIssueWorkload: '/getIssueWorkload',
-  getPatentWorkload: '/getPatentWorkload',
-  getPaperWorkload: '/getPaperWorkload',
+  getTeachingWorkload: '/teachMessage.hrb',
+  getLabWorkload: '/testMessage.hrb',
+  getWorkWorkload: '/bookMessage.hrb',
+  getIssueWorkload: '/topicMessage.hrb',
+  getPatentWorkload: '/patentMessage.hrb',
+  getPaperWorkload: '/paperMessage.hrb',
 
   // coefficient 系数
-  updateCoefficient: '/updateCoefficient',
-  getCoefficient: '/getCoefficient',
+  updateCoefficient: '/updateCoeModify.hrb',
+  getCoefficient: '/queryTheCoe.hrb',
 
   // message 信息
 

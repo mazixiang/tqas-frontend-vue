@@ -31,7 +31,7 @@ export default {
         switch (response.status) {
           case 'success':
             // TODO 教师主页
-            this.$router.push('/teacher/:/home');
+            this.$router.push('/teacher');
             break;
           case 'err-user-not-found':
             this.$router.push('/register');

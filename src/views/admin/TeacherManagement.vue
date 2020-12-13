@@ -6,6 +6,7 @@
       @delete-teacher="deleteTeacher($event)"
       @refresh-table="refreshTable()"
       @add-user="addTeacher()"
+      @update-user="updateTeacher($event)"
     />
   </div>
 </template>
@@ -44,7 +45,6 @@ export default {
       // });
       await deleteTeacher(id).then((response) => {
         switch (response.status) {
-          // TODO 修改管理教师页面的路径
           case 'success':
             this.refreshTable();
             break;
@@ -53,6 +53,14 @@ export default {
     },
     addTeacher() {
       this.$router.push('/addTeacher');
+    },
+    updateTeacher(id) {
+      this.$router.push({
+        name: 'AdminUpdateTeacher',
+        params: {
+          id,
+        },
+      });
     },
   },
 };

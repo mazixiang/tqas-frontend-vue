@@ -108,7 +108,7 @@
       <div class="row mb-3 d-flex justify-content-center align-items-center">
         <div class="col col-md-12">
           <button class="btn btn-outline-primary" @click="$emit('submit')">
-            注册
+            {{ isUpdateForm ? '更新' : '注册' }}
           </button>
         </div>
       </div>
@@ -118,7 +118,7 @@
 
 <script>
 export default {
-  name: 'RegisterForm',
+  name: 'UserForm',
   props: {
     title: String,
     userData: Object,

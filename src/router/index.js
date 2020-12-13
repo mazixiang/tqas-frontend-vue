@@ -18,9 +18,9 @@ const routes = [
         component: () => import('@/views/admin/AdminHome'),
       },
       {
-        path: 'updateTeacher',
+        path: 'AdminUpdateTeacher',
         name: 'AdminUpdateTeacher',
-        component: () => import('@/views/teacher/UpdateTeacher'),
+        component: () => import('@/views/admin/UpdateTeacher'),
       },
       {
         path: 'updateCoefficient',

@@ -31,7 +31,7 @@ export default {
 
     if (!this.enterFromOtherEntrance) {
       this.teacherId = this.$route.params.id;
-      await queryTeacherById(this.teacherId).then((response) => {
+      await queryTeacherById().then((response) => {
         console.log(response);
         switch (response.status) {
           case 'success':

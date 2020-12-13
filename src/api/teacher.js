@@ -1,10 +1,11 @@
 import axios from 'axios';
 import urls from '@/api/urls';
+import qs from 'qs';
 
-function convertData(teacherData) {
+function convertToSubmitData(teacherData) {
   return {
     t_id: teacherData.id,
-    t_name: teacherData.email,
+    t_name: teacherData.name,
     t_gender: teacherData.gender,
     t_password: teacherData.password,
     t_email: teacherData.emailAddress,
@@ -12,8 +13,19 @@ function convertData(teacherData) {
   };
 }
 
+function convertFromServerData(serverData) {
+  return {
+    id: serverData.t_id,
+    name: serverData.t_name,
+    gender: serverData.t_gender,
+    password: serverData.t_password,
+    emailAddress: serverData.t_email,
+    phoneNumber: serverData.t_phone,
+  };
+}
+
 async function addTeacher(teacherData) {
-  let submitData = convertData(teacherData);
+  let submitData = convertToSubmitData(teacherData);
 
   let tmpResponse = null;
   await axios
@@ -47,7 +59,7 @@ async function deleteTeacher(id) {
 async function queryAllTeachers() {
   let tmpResponse = null;
 
-  await axios.get(urls.queryAllAdmins).then((response) => {
+  await axios.get(urls.queryAllTeachers).then((response) => {
     console.log(response);
     tmpResponse = response;
   });
@@ -64,25 +76,17 @@ async function queryTeacherById(id) {
   let tmpResponse = null;
 
   await axios
-    .post(urls.queryAdminById, JSON.stringify(submitData))
+    .post(urls.queryTeacherById, JSON.stringify(submitData))
     .then((response) => {
       console.log(response);
       tmpResponse = response;
     });
 
-  let tmpTarget = tmpResponse.data.result;
+  let data = convertFromServerData(tmpResponse.data.result);
 
   return {
     status: tmpResponse.data.status,
-    data: tmpResponse.data.result,
-    target: {
-      id: tmpTarget.id,
-      name: tmpTarget.name,
-      gender: tmpTarget.gender,
-      password: tmpTarget.password,
-      emailAddress: tmpTarget.emailAddress,
-      phoneNumber: tmpTarget.phoneNumber,
-    },
+    data,
   };
 }
 
@@ -95,7 +99,7 @@ async function teacherLogin(teacherData) {
   let tmpResponse = null;
 
   await axios
-    .post(urls.teacherLogin, JSON.stringify(submitData))
+    .post(urls.teacherLogin, qs.stringify(submitData))
     .then((response) => {
       tmpResponse = response;
       console.log(response);
@@ -107,13 +111,15 @@ async function teacherLogin(teacherData) {
 }
 
 async function updateTeacher(newTeacher) {
-  let submitData = convertData(newTeacher);
+  let submitData = convertToSubmitData(newTeacher);
 
   let tmpResponse = null;
 
-  axios.post(urls.updateAdmin, JSON.stringify(submitData)).then((response) => {
-    tmpResponse = response;
-  });
+  axios
+    .post(urls.updateTeacher, JSON.stringify(submitData))
+    .then((response) => {
+      tmpResponse = response;
+    });
 
   return {
     status: tmpResponse.data.status,
