@@ -14,25 +14,32 @@ import TeachingMessageTable from '@/components/message/table/TeachingMessageTabl
 import {
   deleteTeachingMessage,
   queryTeachingMessagesByOwnerId,
+  queryAllTeachingMessages,
 } from '@/api/message/teachingMessage';
 
 export default {
   name: 'ListTeachingMessage',
-  metaInfo: {title: '教学信息'},
+  metaInfo: { title: '教学信息' },
   components: { TeachingMessageTable },
   data() {
     return { messages: [] };
   },
   methods: {
     async refreshTable() {
-      let ownerId = this.$store.state.currentUserId;
-      await queryTeachingMessagesByOwnerId(ownerId).then((response) => {
-        switch (response.status) {
-          case 'success':
+      if (!this.currentUserIsAdmin) {
+        let ownerId = this.$store.state.currentUserId;
+        await queryTeachingMessagesByOwnerId(ownerId).then((response) => {
+          if (response.status === 1) {
             this.messages = response.data.slice();
-            break;
-        }
-      });
+          }
+        });
+      } else {
+        await queryAllTeachingMessages().then((response) => {
+          if (response.status === 1) {
+            this.messages = response.data.slice();
+          }
+        });
+      }
     },
     async doDelete(messageId) {
       await deleteTeachingMessage(messageId).then((response) => {

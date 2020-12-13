@@ -45,11 +45,11 @@ async function deleteTeachingMessage(messageId) {
   let tmpResponse = null;
 
   let submitData = {
-    tm_id: messageId,
+    t_id: messageId,
   };
 
   await axios
-    .post(urls.deleteTeachingMessage, JSON.stringify(submitData))
+    .post(urls.deleteTeachingMessage, qs.stringify(submitData))
     .then((response) => {
       tmpResponse = response;
     });
