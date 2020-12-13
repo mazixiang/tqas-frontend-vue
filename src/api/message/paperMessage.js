@@ -57,23 +57,17 @@ async function deletePaperMessage(messageId) {
 
 async function queryPaperMessagesByOwnerId(ownerId) {
   let tmpResponse = null;
+  let messages = null;
 
-  let submitData = {
-    ownerId: ownerId,
-  };
+  await queryAllPaperMessages().then((response) => {
+    tmpResponse = response;
+    messages = response.data.slice();
+  });
 
-  await axios
-    .post(urls.queryPaperMessagesByOwnerId, JSON.stringify(submitData))
-    .then((response) => {
-      tmpResponse = response;
-    });
-
-  let messages = tmpResponse.data.result.slice();
-
-  let data = convertMessages(messages);
+  let data = messages.filter((message) => message.ownerId === ownerId);
 
   return {
-    status: tmpResponse.data.status,
+    status: tmpResponse.status,
     data,
   };
 }

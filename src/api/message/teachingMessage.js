@@ -61,23 +61,17 @@ async function deleteTeachingMessage(messageId) {
 
 async function queryTeachingMessagesByOwnerId(ownerId) {
   let tmpResponse = null;
+  let messages = null;
 
-  let submitData = {
-    tm_ownerid: ownerId,
-  };
+  await queryAllTeachingMessages().then((response) => {
+    tmpResponse = response;
+    messages = response.data.slice();
+  });
 
-  await axios
-    .post(urls.queryTeachingMessagesByOwnerId, JSON.stringify(submitData))
-    .then((response) => {
-      tmpResponse = response;
-    });
-
-  let messages = tmpResponse.data.result.slice();
-
-  let data = convertMessages(messages);
+  let data = messages.filter((message) => message.ownerId === ownerId);
 
   return {
-    status: tmpResponse.data.status,
+    status: tmpResponse.status,
     data,
   };
 }

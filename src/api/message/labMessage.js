@@ -61,23 +61,17 @@ async function deleteLabMessage(messageId) {
 
 async function queryLabMessagesByOwnerId(ownerId) {
   let tmpResponse = null;
+  let messages = null;
 
-  let submitData = {
-    s_ownerid: ownerId,
-  };
+  await queryAllLabMessages().then((response) => {
+    tmpResponse = response;
+    messages = response.data.slice();
+  });
 
-  await axios
-    .post(urls.queryLabMessagesByOwnerId, JSON.stringify(submitData))
-    .then((response) => {
-      tmpResponse = response;
-    });
-
-  let messages = tmpResponse.data.result.slice();
-
-  let data = convertMessages(messages);
+  let data = messages.filter((message) => message.ownerId === ownerId);
 
   return {
-    status: tmpResponse.data.status,
+    status: tmpResponse.status,
     data,
   };
 }
