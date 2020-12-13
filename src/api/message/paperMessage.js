@@ -41,11 +41,11 @@ async function deletePaperMessage(messageId) {
   let tmpResponse = null;
 
   let submitData = {
-    id: messageId,
+    p_id: messageId,
   };
 
   await axios
-    .post(urls.deletePaperMessage, JSON.stringify(submitData))
+    .post(urls.deletePaperMessage, qs.stringify(submitData))
     .then((response) => {
       tmpResponse = response;
     });
