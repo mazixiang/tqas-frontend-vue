@@ -27,10 +27,8 @@ export default {
   methods: {
     async doSubmit() {
       await addPatentMessage(this.patentMessage).then((response) => {
-        switch (response.status) {
-          case 'success':
-            this.$router.back();
-            break;
+        if (response.status === 1) {
+          this.$router.back();
         }
       });
     },

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import urls from '@/api/urls';
+import qs from 'qs';
 import { v4 as uuid } from 'uuid';
 
 function convertMessages(messages) {
@@ -22,11 +23,11 @@ async function addPatentMessage(patentMessage) {
     id,
     ownerId: patentMessage.ownerId,
     periodical: patentMessage.phase,
-    pRank: patentMessage.rank,
+    prank: patentMessage.rank,
   };
 
   await axios
-    .post(urls.addPatentMessage, JSON.stringify(submitData))
+    .post(urls.addPatentMessage, qs.stringify(submitData))
     .then((response) => {
       tmpResponse = response;
     });
