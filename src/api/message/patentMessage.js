@@ -41,17 +41,17 @@ async function deletePatentMessage(messageId) {
   let tmpResponse = null;
 
   let submitData = {
-    id: messageId,
+    p_id: messageId,
   };
 
   await axios
-    .post(urls.deletePatentMessage, JSON.stringify(submitData))
+    .post(urls.deletePatentMessage, qs.stringify(submitData))
     .then((response) => {
       tmpResponse = response;
     });
 
   return {
-    status: tmpResponse.data.response,
+    status: tmpResponse.data.status,
   };
 }
 
