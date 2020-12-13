@@ -1,5 +1,6 @@
 import axios from 'axios';
 import urls from '@/api/urls';
+import qs from "qs";
 import { v4 as uuid } from 'uuid';
 
 function convertMessages(messages) {
@@ -18,19 +19,19 @@ function convertMessages(messages) {
 async function addLabMessage(teachingMessage) {
   let tmpResponse = null;
 
-  let s_id = uuid();
+  let id = uuid();
 
   let submitData = {
-    s_id,
-    s_ownerid: teachingMessage.ownerId,
-    s_coursename: teachingMessage.courseName,
-    s_courseperiod: teachingMessage.coursePeriod,
-    s_classname: teachingMessage.className,
-    s_classsize: teachingMessage.classSize,
+    id,
+    ownerId: teachingMessage.ownerId,
+    courseName: teachingMessage.courseName,
+    coursePeriod: teachingMessage.coursePeriod,
+    className: teachingMessage.className,
+    classSize: teachingMessage.classSize,
   };
 
   await axios
-    .post(urls.addLabMessage, JSON.stringify(submitData))
+    .post(urls.addLabMessage, qs.stringify(submitData))
     .then((response) => {
       tmpResponse = response;
     });

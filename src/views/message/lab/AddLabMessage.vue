@@ -31,9 +31,8 @@ export default {
   methods: {
     async doAdd() {
       await addLabMessage(this.labMessage).then((response) => {
-        switch (response.status) {
-          case 'success':
-            this.$router.back();
+        if (response.status === 1) {
+          this.$router.back();
         }
       });
     },
