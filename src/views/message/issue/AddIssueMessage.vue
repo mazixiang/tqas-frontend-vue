@@ -27,10 +27,8 @@ export default {
   methods: {
     async doSubmit() {
       await addIssueMessage(this.issueMessage).then((response) => {
-        switch (response.status) {
-          case 'success':
-            this.$router.back();
-            break;
+        if (response.status === 1) {
+          this.$router.back();
         }
       });
     },
