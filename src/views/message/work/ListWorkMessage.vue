@@ -48,10 +48,8 @@ export default {
     },
     async doDelete(messageId) {
       await deleteWorkMessage(messageId).then((response) => {
-        switch (response.status) {
-          case 'success':
-            this.refreshTable();
-            break;
+        if (response.status === 1) {
+          this.refreshTable();
         }
       });
     },
