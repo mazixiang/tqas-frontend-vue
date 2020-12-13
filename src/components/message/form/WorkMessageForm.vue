@@ -40,9 +40,7 @@
         class="row mb-3 form-group d-flex justify-content-center align-items-center"
       >
         <div class="col col-md-12">
-          <button class="btn btn-outline-primary" @click="$emit('submit')">
-            添加
-          </button>
+          <input type="submit" class="btn btn-outline-primary" value="添加" />
         </div>
       </div>
     </form>
@@ -54,6 +52,12 @@ export default {
   name: 'WorkMessageForm',
   props: {
     workMessage: Object,
+  },
+  methods: {
+    doSubmit(event) {
+      event.preventDefault();
+      this.$emit('submit');
+    },
   },
 };
 </script>

@@ -3,7 +3,7 @@
     <div class="row d-flex justify-content-center align-items-center my-2">
       <h2>添加实验信息</h2>
     </div>
-    <form @submit="$event.preventDefault()">
+    <form @submit="doSubmit($event)">
       <div class="row mb-3 form-group">
         <label for="lab-name" class="col-md-3 col-form-label"> 实验名称 </label>
         <div class="col-md-9">
@@ -64,9 +64,7 @@
         class="row mb-3 form-group d-flex justify-content-center align-items-center"
       >
         <div class="col col-md-12">
-          <button class="btn btn-outline-primary" @click="$emit('submit')">
-            添加
-          </button>
+          <input type="submit" class="btn btn-outline-primary" value="添加" />
         </div>
       </div>
     </form>
@@ -78,6 +76,12 @@ export default {
   name: 'LabMessageForm',
   props: {
     labMessage: Object,
+  },
+  methods: {
+    doSubmit(event) {
+      event.preventDefault();
+      this.$emit('submit');
+    },
   },
 };
 </script>

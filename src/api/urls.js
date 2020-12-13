@@ -13,6 +13,10 @@ let paths = {
   adminLogin: '/adminLogin',
   register: '/insertTeacher.hrb',
 
+  // 退出登录
+
+  logout: '/logout',
+
   // admin 管理员
   queryAllAdmins: '/queryAllAdmin.hrb',
   queryAdminById: '/queryByIDAdmin.hrb',

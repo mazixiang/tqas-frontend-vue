@@ -6,16 +6,17 @@
     <div class="row d-flex justify-content-center align-items-center my-2">
       <h2>修改系数</h2>
     </div>
-    <form @submit="$event.preventDefault()">
+    <form @submit="doSubmit($event)">
       <div class="row mb-3 form-group">
         <label for="teach" class="col-md-4 col-form-label">教学系数</label>
         <div class="col-md-4">
           <input
-            type="text"
+            type="number"
             id="teach"
-            v-model="coefficient.teach"
+            v-model.number="coefficient.teach"
             class="form-control"
-            placeholder="输入用户名"
+            placeholder="输入教学系数"
+            required
           />
         </div>
       </div>
@@ -24,10 +25,12 @@
         <label for="lab" class="col-md-4 col-form-label">实验系数</label>
         <div class="col-md-4">
           <input
-            type="text"
+            type="number"
             id="lab"
-            v-model="coefficient.lab"
+            v-model.number="coefficient.lab"
             class="col-md-9 form-control"
+            placeholder="输入实验系数"
+            required
           />
         </div>
       </div>
@@ -36,10 +39,12 @@
         <label for="work" class="col-md-4 col-form-label">著作系数</label>
         <div class="col-md-4">
           <input
-            type="text"
+            type="number"
             id="work"
-            v-model="coefficient.work"
+            v-model.number="coefficient.work"
             class="col-md-9 form-control"
+            placeholder="输入著作系数"
+            required
           />
         </div>
       </div>
@@ -48,10 +53,12 @@
         <label for="paper" class="col-md-4 col-form-label">论文系数</label>
         <div class="col-md-4">
           <input
-            type="text"
+            type="number"
             id="paper"
-            v-model="coefficient.paper"
+            v-model.number="coefficient.paper"
             class="col-md-9 form-control"
+            placeholder="输入论文系数"
+            required
           />
         </div>
       </div>
@@ -60,10 +67,12 @@
         <label for="issue" class="col-md-4 col-form-label">课题系数</label>
         <div class="col-md-4">
           <input
-            type="text"
+            type="number"
             id="issue"
-            v-model="coefficient.issue"
+            v-model.number="coefficient.issue"
             class="col-md-9 form-control"
+            placeholder="输入课题系数"
+            required
           />
         </div>
       </div>
@@ -72,10 +81,12 @@
         <label for="patent" class="col-md-4 col-form-label">专利系数</label>
         <div class="col-md-4">
           <input
-            type="text"
+            type="number"
             id="patent"
-            v-model="coefficient.patent"
+            v-model.number="coefficient.patent"
             class="col-md-9 form-control"
+            placeholder="输入专利系数"
+            required
           />
         </div>
       </div>
@@ -84,12 +95,7 @@
         class="row mb-3 btn-line d-flex justify-content-center align-items-center"
       >
         <div class="col col-md-12">
-          <button
-            class="btn btn-outline-primary"
-            @click="$emit('update-coefficient')"
-          >
-            提交
-          </button>
+          <input type="submit" class="btn btn-outline-primary" value="提交" />
         </div>
       </div>
     </form>
@@ -102,11 +108,17 @@ export default {
   props: {
     coefficient: Object,
   },
+  methods: {
+    doSubmit(event) {
+      event.preventDefault();
+      this.$emit('update-coefficient');
+    },
+  },
 };
 </script>
 
 <style scoped>
 #coe-container {
-  width: 300px;
+  width: 450px;
 }
 </style>

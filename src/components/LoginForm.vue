@@ -56,7 +56,7 @@
         class="row mb-3 btn-line d-flex justify-content-center align-items-center"
       >
         <div class="col col-md-12">
-          <button class="btn btn-outline-primary">登录</button>
+          <input type="submit" class="btn btn-outline-primary" value="登录" />
         </div>
       </div>
     </form>

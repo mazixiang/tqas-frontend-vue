@@ -7,6 +7,7 @@
       :user-msg="userMsg"
       :home-link="homeLink"
       @update-user="goUpdate"
+      @logout="logout"
     />
 
     <router-view />
@@ -53,6 +54,9 @@ export default {
           id: this.$store.state.currentUserId,
         },
       });
+    },
+    logout() {
+      this.$store.commit('userLogout');
     },
   },
   computed: {
