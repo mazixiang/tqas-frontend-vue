@@ -1,6 +1,6 @@
 import axios from 'axios';
 import urls from '@/api/urls';
-import qs from "qs";
+import qs from 'qs';
 import { v4 as uuid } from 'uuid';
 
 function convertMessages(messages) {
@@ -41,11 +41,11 @@ async function deleteIssueMessage(messageId) {
   let tmpResponse = null;
 
   let submitData = {
-    id: messageId,
+    t_id: messageId,
   };
 
   await axios
-    .post(urls.deleteIssueMessage, JSON.stringify(submitData))
+    .post(urls.deleteIssueMessage, qs.stringify(submitData))
     .then((response) => {
       tmpResponse = response;
     });
