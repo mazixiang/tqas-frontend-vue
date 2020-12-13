@@ -90,11 +90,10 @@ async function queryTeacherById(id) {
   };
 }
 
-// TODO 教师登录
 async function teacherLogin(teacherData) {
   let submitData = {
-    t_id: teacherData.id,
-    t_password: teacherData.password,
+    username: teacherData.id,
+    password: teacherData.password,
   };
 
   let tmpResponse = null;
@@ -103,7 +102,6 @@ async function teacherLogin(teacherData) {
     .post(urls.teacherLogin, qs.stringify(submitData))
     .then((response) => {
       tmpResponse = response;
-      console.log(response);
     });
 
   return {
