@@ -1,5 +1,6 @@
 import axios from 'axios';
 import urls from '@/api/urls';
+import qs from 'qs';
 import { v4 as uuid } from 'uuid';
 
 function convertMessages(messages) {
@@ -22,11 +23,11 @@ async function addPaperMessage(paperMessage) {
     id,
     ownerId: paperMessage.ownerId,
     phase: paperMessage.periodical,
-    pRank: paperMessage.rank,
+    prank: paperMessage.rank,
   };
 
   await axios
-    .post(urls.addPaperMessage, JSON.stringify(submitData))
+    .post(urls.addPaperMessage, qs.stringify(submitData))
     .then((response) => {
       tmpResponse = response;
     });
