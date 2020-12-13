@@ -26,11 +26,11 @@ export default {
   },
   methods: {
     async doAdd() {
-      await addWorkMessage(this.workMessage).then(response => {
-        switch (response.status) {
-          case 'success': this.$router.back();
+      await addWorkMessage(this.workMessage).then((response) => {
+        if (response.status === 1) {
+          this.$router.back();
         }
-      })
+      });
     },
   },
 };

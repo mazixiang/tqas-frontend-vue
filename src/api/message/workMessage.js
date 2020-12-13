@@ -1,5 +1,6 @@
 import axios from 'axios';
 import urls from '@/api/urls';
+import qs from 'qs'
 import { v4 as uuid } from 'uuid';
 
 function convertMessages(messages) {
@@ -16,17 +17,17 @@ function convertMessages(messages) {
 async function addWorkMessage(workMessage) {
   let tmpResponse = null;
 
-  let z_id = uuid();
+  let id = uuid();
 
   let submitData = {
-    z_id,
-    z_ownerid: workMessage.ownerId,
-    z_date: workMessage.date,
-    z_rank: workMessage.rank,
+    id,
+    ownerId: workMessage.ownerId,
+    date: workMessage.date,
+    zrank: workMessage.rank,
   };
 
   await axios
-    .post(urls.addWorkMessage, JSON.stringify(submitData))
+    .post(urls.addWorkMessage, qs.stringify(submitData))
     .then((response) => {
       tmpResponse = response;
     });
