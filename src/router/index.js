@@ -9,6 +9,16 @@ const routes = [
     component: () => import('@/views/Home'),
   },
   {
+    path: '/login/admin',
+    name: 'AdminLogin',
+    component: () => import('@/views/admin/AdminLogin'),
+  },
+  {
+    path: '/login/teacher',
+    name: 'TeacherLogin',
+    component: () => import('@/views/teacher/TeacherLogin'),
+  },
+  {
     path: '/admin',
     component: () => import('@/views/admin/Admin'),
     children: [
@@ -32,12 +42,6 @@ const routes = [
         name: 'AdminManagement',
         component: () => import('@/views/admin/AdminManagement'),
       },
-      {
-        path: 'login',
-        name: 'AdminLogin',
-        component: () => import('@/views/admin/AdminLogin'),
-      },
-
       {
         path: 'add',
         name: 'AddAdmin',
@@ -150,11 +154,6 @@ const routes = [
         path: 'update',
         name: 'updateTeacher',
         component: () => import('@/views/teacher/UpdateTeacher'),
-      },
-      {
-        path: 'login',
-        name: 'TeacherLogin',
-        component: () => import('@/views/teacher/TeacherLogin'),
       },
       {
         path: 'register',

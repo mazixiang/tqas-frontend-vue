@@ -90,6 +90,7 @@ async function queryTeacherById(id) {
   };
 }
 
+// TODO 教师登录
 async function teacherLogin(teacherData) {
   let submitData = {
     t_id: teacherData.id,

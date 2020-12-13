@@ -6,7 +6,7 @@
 
 <script>
 import UserForm from '@/components/UserForm';
-import {addTeacher} from "@/api/teacher";
+import { addTeacher } from '@/api/teacher';
 
 export default {
   name: 'Register',
@@ -30,15 +30,13 @@ export default {
   },
   methods: {
     async register() {
-      await addTeacher(this.teacherData).then(response=> {
+      await addTeacher(this.teacherData).then((response) => {
         switch (response.status) {
           case 'success':
-            // TODO 修改教师主页
-            this.$router.push('/teacher/home');
+            this.$router.push('/teacher');
         }
-      })
+      });
     },
   },
 };
 </script>
-

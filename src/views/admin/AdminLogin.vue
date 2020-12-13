@@ -28,21 +28,14 @@ export default {
   methods: {
     async login() {
       await adminLogin(this.formData).then((response) => {
-        console.log(response);
-        switch (response.status) {
-          case 'success':
-            this.$store.commit({
-              type: 'updateCurrentUser',
-              newUser: { id: this.formData.id, isAdmin: true },
-            });
-            this.$router.push('/admin');
-            break;
-          case 'user-not-found':
-            this.$router.push('/register');
-            break;
-          case 'err-wrong-password':
-            this.$router.push('/login');
-            break;
+        if (response.status === 1) {
+          this.$store.commit({
+            type: "updateCurrentUser",
+            newUser: {id: this.formData.id, isAdmin: true}
+          });
+          this.$router.push('/admin')
+        } else {
+          this.$router.push('/login/admin');
         }
       });
     },

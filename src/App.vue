@@ -20,8 +20,8 @@ export default {
   data() {
     return {
       loginNavs: [
-        { content: '教师登录', link: '/teacher/login' },
-        { content: '管理员登录', link: '/admin/login' },
+        { content: '教师登录', link: '/login/teacher' },
+        { content: '管理员登录', link: '/login/admin' },
       ],
       adminNavs: [
         { content: '教学信息', link: '/admin/message/teaching' },

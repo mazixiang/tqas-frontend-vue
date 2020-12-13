@@ -28,17 +28,14 @@ export default {
   methods: {
     async login() {
       await teacherLogin(this.teacherData).then((response) => {
-        switch (response.status) {
-          case 'success':
-            // TODO 教师主页
-            this.$router.push('/teacher');
-            break;
-          case 'err-user-not-found':
-            this.$router.push('/register');
-            break;
-          case 'err-wrong-password':
-            this.$router.push('/login');
-            break;
+        if (response.status === 1) {
+          this.$store.commit({
+            type: 'updateCurrentUser',
+            newUser: { id: this.formData.id, isAdmin: false },
+          });
+          this.$router.push('/teacher');
+        } else {
+          this.$router.push('/login/teacher');
         }
       });
     },

@@ -1,22 +1,19 @@
 import axios from 'axios';
 import urls from '@/api/urls';
+import qs from 'qs';
 
 export default async function login(adminData) {
   let submitData = {
-    a_id: adminData.id,
-    a_password: adminData.password,
+    username: adminData.id,
+    password: adminData.password,
   };
 
   let tmpResponse = null;
 
   await axios
-    .post(urls.adminLogin, JSON.stringify(submitData))
+    .post(urls.adminLogin, qs.stringify(submitData))
     .then((response) => {
       tmpResponse = response;
-      console.log(response);
-      // return {
-      //   status: response.data.status,
-      // };
     });
 
   return {

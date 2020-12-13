@@ -33,7 +33,6 @@ export default {
       await addTeacher(this.teacherData).then((response) => {
         switch (response.status) {
           case 'success':
-            // TODO 修改管理教师的页面
             this.$router.push('/admin/manageTeacher');
         }
       });
