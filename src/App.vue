@@ -6,7 +6,7 @@
       :user-logged-in="userLoggedIn"
       :user-msg="userMsg"
       :home-link="homeLink"
-      @update-user="goUpdate"
+      @update-user="goUpdate($event)"
       @logout="logout"
     />
 

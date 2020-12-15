@@ -31,7 +31,7 @@ export default {
 
     if (!this.enterFromOtherEntrance) {
       this.teacherId = this.$route.params.id;
-      await queryTeacherById().then((response) => {
+      await queryTeacherById(this.teacherId).then((response) => {
         console.log(response);
         switch (response.status) {
           case 'success':
@@ -44,13 +44,20 @@ export default {
   data() {
     return {
       enterFromOtherEntrance: true,
-      teacherData: null,
+      teacherData: {
+        id: '',
+        name: '',
+        gender: '',
+        password: '',
+        emailAddress: '',
+        phoneNumber: '',
+      },
       teacherId: null,
     };
   },
   methods: {
     async doUpdate() {
-      await updateTeacher(this.adminData).then((response) => {
+      await updateTeacher(this.teacherData).then((response) => {
         if (response.status === 'success') {
           this.$router.push(this.nextPath);
         }
@@ -60,10 +67,10 @@ export default {
   computed: {
     nextPath() {
       if (this.$store.state.currentUserIsAdmin) {
-        return '/teacher/manage';
+        return '/manageTeacher';
       } else {
         // 修改教师主页路径
-        return '/teacher/home';
+        return '/teacher';
       }
     },
   },

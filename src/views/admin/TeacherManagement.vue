@@ -52,7 +52,7 @@ export default {
       });
     },
     addTeacher() {
-      this.$router.push('/addTeacher');
+      this.$router.push({ name: 'AdminAddTeacher' });
     },
     updateTeacher(id) {
       this.$router.push({

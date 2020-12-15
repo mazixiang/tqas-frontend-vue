@@ -34,8 +34,6 @@ export default {
             newUser: { id: this.formData.id, isAdmin: false },
           });
           this.$router.push('/teacher');
-        } else {
-          this.$router.push('/login/teacher');
         }
       });
     },

@@ -59,6 +59,11 @@ const routes = [
         component: () => import('@/views/admin/TeacherManagement'),
       },
       {
+        path: 'add',
+        name: 'AdminAddTeacher',
+        component: () => import('@/views/teacher/AddTeacher'),
+      },
+      {
         path: 'message',
         name: 'adminMessage',
         component: () => import('@/views/message/Message'),

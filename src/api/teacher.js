@@ -122,7 +122,7 @@ async function updateTeacher(newTeacher) {
 
   let tmpResponse = null;
 
-  axios
+  await axios
     .post(urls.updateTeacher, JSON.stringify(submitData))
     .then((response) => {
       tmpResponse = response;

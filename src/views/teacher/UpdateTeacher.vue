@@ -44,13 +44,20 @@ export default {
   data() {
     return {
       enterFromOtherEntrance: true,
-      teacherData: null,
+      teacherData: {
+        id: '',
+        name: '',
+        gender: '男',
+        password: '',
+        emailAddress: '',
+        phoneNumber: '',
+      },
       teacherId: null,
     };
   },
   methods: {
     async doUpdate() {
-      await updateTeacher(this.adminData).then((response) => {
+      await updateTeacher(this.teacherData).then((response) => {
         if (response.status === 'success') {
           this.$router.push(this.nextPath);
         }
