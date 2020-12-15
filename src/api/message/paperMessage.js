@@ -6,9 +6,9 @@ import { v4 as uuid } from 'uuid';
 function convertMessages(messages) {
   return messages.map((value) => {
     return {
-      id: value.id,
-      ownerId: value.ownerId,
-      periodical: value.phase,
+      id: value.pId,
+      ownerId: value.pOwnerId,
+      periodical: value.pPhase,
       rank: value.pRank,
     };
   });
@@ -80,6 +80,7 @@ async function queryAllPaperMessages() {
 
   let messages = tmpResponse.data.result.slice();
   let data = convertMessages(messages);
+  console.log(data);
 
   return {
     status: tmpResponse.data.status,

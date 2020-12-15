@@ -33,11 +33,17 @@
       </tbody>
     </table>
 
-    <div class="row d-flex justify-content-end" v-if="!isAdmin">
-      <div class="col-md-2">
+    <div class="row d-flex justify-content-end">
+      <div class="col-md-2" v-if="!isAdmin">
         <button class="btn btn-outline-info" @click="$emit('add-message')">
           <font-awesome-icon icon="plus" />
           添加教学信息
+        </button>
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-outline-info" @click="$emit('refresh-table')">
+          <font-awesome-icon icon="sync-alt" />
+          刷新列表
         </button>
       </div>
     </div>
@@ -52,7 +58,7 @@ export default {
     isAdmin: {
       type: Boolean,
       default: false,
-    }
+    },
   },
 };
 </script>

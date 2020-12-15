@@ -3,7 +3,9 @@
     <WorkMessageTable
       :work-messages="messages"
       :is-admin="currentUserIsAdmin"
+      @delete-message="doDelete($event)"
       @add-message="$router.push('/teacher/message/work/add')"
+      @refresh-table="refreshTable"
     />
   </div>
 </template>
@@ -30,18 +32,14 @@ export default {
       if (!this.currentUserIsAdmin) {
         let ownerId = this.$store.state.currentUserId;
         await queryWorkMessagesByOwnerId(ownerId).then((response) => {
-          switch (response.status) {
-            case 'success':
-              this.messages = response.data.slice();
-              break;
+          if (response.status === 1) {
+            this.messages = response.data.slice();
           }
         });
       } else {
         await queryAllWorkMessages().then((response) => {
-          switch (response.status) {
-            case 'success':
-              this.messages = response.data.slice();
-              break;
+          if (response.status === 1) {
+            this.messages = response.data.slice();
           }
         });
       }

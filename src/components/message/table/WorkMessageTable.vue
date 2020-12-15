@@ -16,7 +16,7 @@
         <tr v-for="(message, index) in workMessages" :key="index">
           <td>{{ index + 1 }}</td>
           <td>{{ message.ownerId }}</td>
-          <td>{{ message.date }}</td>
+          <td>{{ convertToDateString(message.date) }}</td>
           <td>{{ message.rank }}</td>
           <td v-if="!isAdmin">
             <button
@@ -30,11 +30,17 @@
       </tbody>
     </table>
 
-    <div class="row d-flex justify-content-end" v-if="!isAdmin">
-      <div class="col-md-2">
+    <div class="row d-flex justify-content-end">
+      <div class="col-md-2" v-if="!isAdmin">
         <button class="btn btn-outline-info" @click="$emit('add-message')">
           <font-awesome-icon icon="plus" />
           添加著作信息
+        </button>
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-outline-info" @click="$emit('refresh-table')">
+          <font-awesome-icon icon="sync-alt" />
+          刷新列表
         </button>
       </div>
     </div>
@@ -42,6 +48,7 @@
 </template>
 
 <script>
+import moment from 'moment';
 export default {
   name: 'WorkMessageTable',
   props: {
@@ -49,6 +56,16 @@ export default {
     isAdmin: {
       type: Boolean,
       default: false,
+    },
+  },
+  methods: {
+    convertToDateString(date) {
+      moment.locale('zh-cn');
+      console.log(moment.months());
+      console.log(date.replace(',', ''));
+      let m = moment(date.replace(',', ''), 'MMM D YYYY');
+
+      return m.format('YYYY/MM/DD');
     },
   },
 };

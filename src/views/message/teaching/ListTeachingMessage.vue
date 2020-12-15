@@ -5,6 +5,7 @@
       :is-admin="currentUserIsAdmin"
       @delete-message="doDelete($event)"
       @add-message="addMessage"
+      @refresh-table="refreshTable"
     />
   </div>
 </template>
@@ -43,10 +44,8 @@ export default {
     },
     async doDelete(messageId) {
       await deleteTeachingMessage(messageId).then((response) => {
-        switch (response.status) {
-          case 'success':
-            this.refreshTable();
-            break;
+        if (response.status === 1) {
+          this.refreshTable();
         }
       });
     },

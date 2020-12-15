@@ -6,10 +6,10 @@ import { v4 as uuid } from 'uuid';
 function convertMessages(messages) {
   return messages.map((value) => {
     return {
-      id: value.z_id,
-      ownerId: value.z_ownerid,
-      date: value.z_date,
-      rank: value.z_rank,
+      id: value.zId,
+      ownerId: value.zOwnerId,
+      date: value.zDate,
+      rank: value.zRank,
     };
   });
 }

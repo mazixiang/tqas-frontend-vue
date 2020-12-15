@@ -5,6 +5,7 @@
       :is-admin="currentUserIsAdmin"
       @delete-message="doDelete($delete)"
       @add-message="addMessage"
+      @refresh-table="refreshTable"
     />
   </div>
 </template>
@@ -36,18 +37,14 @@ export default {
       if (!this.currentUserIsAdmin) {
         let ownerId = this.$store.state.currentUserId;
         await queryLabMessagesByOwnerId(ownerId).then((response) => {
-          switch (response.status) {
-            case 'success':
-              this.messages = response.data.slice();
-              break;
+          if (response.status === 1) {
+            this.messages = response.data.slice();
           }
         });
       } else {
         await queryAllLabMessages().then((response) => {
-          switch (response.status) {
-            case 'success':
-              this.messages = response.data.slice();
-              break;
+          if (response.status === 1) {
+            this.messages = response.data.slice();
           }
         });
       }

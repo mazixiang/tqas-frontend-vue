@@ -6,12 +6,12 @@ import { v4 as uuid } from 'uuid';
 function convertMessages(messages) {
   return messages.map((value) => {
     return {
-      id: value.s_id,
-      ownerId: value.s_ownerid,
-      courseName: value.s_coursename,
-      coursePeriod: value.s_courseperiod,
-      className: value.s_classname,
-      classSize: value.s_classsize,
+      id: value.sId,
+      ownerId: value.sOwnerId,
+      courseName: value.sCourseName,
+      coursePeriod: value.sCoursePeriod,
+      className: value.sClassName,
+      classSize: value.sClassSize,
     };
   });
 }
