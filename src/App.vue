@@ -105,6 +105,12 @@ export default {
       return this.$store.state.currentUserId;
     },
   },
+  created() {
+    if (sessionStorage.getItem('currentUser') !== null) {
+      let currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+      this.$store.dispatch('updateCurrentUser', currentUser);
+    }
+  },
 };
 </script>
 
