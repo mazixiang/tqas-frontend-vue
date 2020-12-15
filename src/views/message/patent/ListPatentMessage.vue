@@ -40,7 +40,7 @@ export default {
         let ownerId = this.$store.state.currentUserId;
         await queryPatentMessagesByOwnerId(ownerId).then((response) => {
           if (response.status === 1) {
-            this.messages = response.data.slice;
+            this.messages = response.data.slice();
           }
         });
       } else {

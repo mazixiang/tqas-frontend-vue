@@ -7,7 +7,7 @@ function convertMessages(messages) {
   return messages.map((value) => {
     return {
       id: value.paId,
-      ownerId: value.pOwnerId,
+      ownerId: value.paOwnerId,
       phase: value.paPeriodical,
       rank: value.paRank,
     };
