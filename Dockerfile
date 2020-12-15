@@ -1,23 +1,16 @@
-FROM node:lts-alpine
+FROM node:lts-alpine as build-stage
 
 MAINTAINER mazixiang
-
 RUN npm config set registry https://registry.npm.taobao.org
-
 RUN yarn config set registry https://registry.npm.taobao.org
-
 RUN npm install -g http-server
-
 WORKDIR /app
-
 COPY package*.json ./
-
 RUN yarn install
-
 COPY . .
-
 RUN yarn build
 
-EXPOSE 8080
-
-CMD ["http-server", "dist"]
+FROM nginx:stable-alpine as production-stage
+COPY --from=build-stage /app/dist /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
