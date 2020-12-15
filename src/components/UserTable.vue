@@ -25,6 +25,16 @@
           <td>{{ user.phoneNumber }}</td>
           <td>
             <button
+              class="btn btn-outline-primary btn-sm btn-operation"
+              @click="$emit('assess-teacher', user.id)"
+              v-if="isTeacherTable"
+            >
+              <font-awesome-icon icon="calculator" />
+            </button>
+
+            &nbsp;
+
+            <button
               class="btn btn-outline-info btn-sm btn-operation"
               @click="$emit('update-user', user.id)"
             >
@@ -67,6 +77,10 @@ export default {
   props: {
     users: Array,
     title: String,
+    isTeacherTable: {
+      type: Boolean,
+      default: false,
+    },
   },
 };
 </script>
@@ -77,7 +91,6 @@ export default {
 }
 
 .btn-operation {
-  width: 30%;
+  width: 20%;
 }
-
 </style>

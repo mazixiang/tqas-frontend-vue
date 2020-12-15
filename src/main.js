@@ -12,6 +12,7 @@ import {
   faUser,
   faLock,
   faHome,
+  faCalculator,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
@@ -19,7 +20,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/js/dist/collapse';
 import store from './store';
 
-library.add(faTrashAlt, faEdit, faSyncAlt, faPlus, faUser, faLock, faHome);
+library.add(
+  faTrashAlt,
+  faEdit,
+  faSyncAlt,
+  faPlus,
+  faUser,
+  faLock,
+  faHome,
+  faCalculator
+);
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 

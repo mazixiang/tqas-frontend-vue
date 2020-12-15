@@ -2,11 +2,13 @@
   <div class="container">
     <UserTable
       :users="teachers"
+      :is-teacher-table="true"
       title="教师信息管理"
       @delete-user="deleteTeacher($event)"
-      @refresh-table="refreshTable()"
-      @add-user="addTeacher()"
+      @refresh-table="refreshTable"
+      @add-user="addTeacher"
       @update-user="updateTeacher($event)"
+      @assess-teacher="assessTeacher($event)"
     />
   </div>
 </template>
@@ -54,6 +56,14 @@ export default {
     updateTeacher(id) {
       this.$router.push({
         name: 'AdminUpdateTeacher',
+        params: {
+          id,
+        },
+      });
+    },
+    assessTeacher(id) {
+      this.$router.push({
+        name: 'AssessTeacher',
         params: {
           id,
         },

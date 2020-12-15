@@ -16,7 +16,7 @@ import { getCoefficient } from '@/api/coefficient';
 export default {
   name: 'AdminHome',
   metaInfo: {
-    title: '管理员主页'
+    title: '管理员主页',
   },
   components: { CoefficientBoard },
   async created() {
