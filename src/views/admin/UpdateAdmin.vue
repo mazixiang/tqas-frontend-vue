@@ -16,13 +16,12 @@
 
 <script>
 import UserForm from '@/components/UserForm';
-import queryAdminById from '@/api/admin/queryAdminById';
-import updateAdmin from '@/api/admin/updateAdmin';
-import EnterFromOtherEntranceError from "@/components/error/EnterFromOtherEntranceError";
+import EnterFromOtherEntranceError from '@/components/error/EnterFromOtherEntranceError';
+import { queryAdminById, updateAdmin } from '@/api/admin';
 
 export default {
   name: 'UpdateAdmin',
-  components: {EnterFromOtherEntranceError, UserForm },
+  components: { EnterFromOtherEntranceError, UserForm },
   metaInfo: {
     title: '管理员信息修改',
   },
@@ -32,12 +31,15 @@ export default {
 
     if (!this.enterFromOtherEntrance) {
       this.adminId = this.$route.params.id;
-      await queryAdminById().then((response) => {
+      await queryAdminById(this.adminId).then((response) => {
         console.log(response);
-        switch (response.status) {
-          case 'success':
-            this.adminData = response.target;
-            break;
+        // switch (response.status) {
+        //   case 'success':
+        //     this.adminData = response.data;
+        //     break;
+        // }
+        if (response.status === 'success') {
+          this.adminData = response.data;
         }
       });
     }
@@ -45,7 +47,14 @@ export default {
   data() {
     return {
       enterFromOtherEntrance: true,
-      adminData: null,
+      adminData: {
+        id: '',
+        name: '',
+        gender: '',
+        password: '',
+        email: '',
+        phone: '',
+      },
       adminId: null,
     };
   },

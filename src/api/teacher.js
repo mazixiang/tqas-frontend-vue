@@ -24,6 +24,10 @@ function convertFromServerData(serverData) {
   };
 }
 
+function convertTeachers(teachers) {
+  return teachers.map((teacher) => convertFromServerData(teacher));
+}
+
 async function addTeacher(teacherData) {
   let submitData = convertToSubmitData(teacherData);
 
@@ -58,15 +62,19 @@ async function deleteTeacher(id) {
 
 async function queryAllTeachers() {
   let tmpResponse = null;
+  let messages = null;
 
   await axios.get(urls.queryAllTeachers).then((response) => {
     console.log(response);
     tmpResponse = response;
+    messages = tmpResponse.data.result.slice();
   });
+
+  let data = convertTeachers(messages);
 
   return {
     status: tmpResponse.data.status,
-    data: tmpResponse.data.result,
+    data,
   };
 }
 

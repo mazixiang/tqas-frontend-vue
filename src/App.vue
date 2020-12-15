@@ -46,7 +46,7 @@ export default {
   },
   methods: {
     goUpdate() {
-      let nextRoute = this.userIsAdmin ? 'updateAdmin' : 'updateTeacher';
+      let nextRoute = this.userIsAdmin ? 'UpdateAdmin' : 'updateTeacher';
 
       this.$router.push({
         name: nextRoute,
@@ -57,6 +57,7 @@ export default {
     },
     logout() {
       this.$store.commit('userLogout');
+      this.$router.push('/');
     },
   },
   computed: {

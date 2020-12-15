@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import adminLogin from '@/api/admin/adminLogin';
+import { adminLogin } from '@/api/admin';
 import LoginForm from '@/components/LoginForm';
 
 export default {
@@ -28,14 +28,13 @@ export default {
   methods: {
     async login() {
       await adminLogin(this.formData).then((response) => {
+        console.log(response);
         if (response.status === 1) {
-          this.$store.commit({
-            type: "updateCurrentUser",
-            newUser: {id: this.formData.id, isAdmin: true}
+          this.$store.dispatch('updateCurrentUser', {
+            id: this.formData.id,
+            isAdmin: true,
           });
-          this.$router.push('/admin')
-        } else {
-          this.$router.push('/login/admin');
+          this.$router.push('/admin');
         }
       });
     },

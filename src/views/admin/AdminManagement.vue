@@ -13,8 +13,7 @@
 
 <script>
 import UserTable from '@/components/UserTable';
-import queryAllAdmins from '@/api/admin/queryAllAdmins';
-import deleteAdmin from '@/api/admin/deleteAdmin';
+import { queryAllAdmins, deleteAdmin } from '@/api/admin';
 
 export default {
   name: 'ManageAdmin',
@@ -41,9 +40,8 @@ export default {
     },
     async deleteAdmin(id) {
       let response = deleteAdmin(id);
-      switch (response.status) {
-        case 'success':
-          console.log(response);
+      if (response.status === 'success') {
+        await this.refreshTable();
       }
     },
     addAdmin() {

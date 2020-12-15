@@ -6,7 +6,7 @@
 
 <script>
 import UserForm from '@/components/UserForm';
-import addAdmin from '@/api/admin/addAdmin';
+import {addAdmin} from '@/api/admin';
 
 export default {
   name: 'AddAdmin',

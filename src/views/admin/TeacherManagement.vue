@@ -63,6 +63,9 @@ export default {
       });
     },
   },
+  async created() {
+    await this.refreshTable();
+  },
 };
 </script>
 

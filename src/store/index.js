@@ -22,6 +22,13 @@ export default new Vuex.Store({
       state.currentUserIsAdmin = false;
     },
   },
-  actions: {},
+  actions: {
+    updateCurrentUser({ commit }, newUser) {
+      commit('updateCurrentUser', newUser);
+    },
+    userLogout({ commit }) {
+      commit('userLogout');
+    },
+  },
   modules: {},
 });

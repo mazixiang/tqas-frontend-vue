@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import store from '@/store/index';
 Vue.use(VueRouter);
 
 const routes = [
@@ -282,12 +283,15 @@ const router = new VueRouter({
   linkActiveClass: 'active',
 });
 
-// router.beforeEach((to, from, next) => {
-//   if (to.path === '/teacher/login' || to.path === '/admin/login') {
-//     next();
-//   } else if (to.path.match(/\/admin\/*/g)) {
-//
-//   }
-// });
+router.beforeEach((to, from, next) => {
+  let urls = ['/', '/login/teacher', '/login/admin', '/teacher/register'];
+
+  console.log(to.path);
+  if (urls.indexOf(to.path) === -1 && store.state.currentUserId === null) {
+    next({ name: 'Home' });
+  } else {
+    next();
+  }
+});
 
 export default router;
