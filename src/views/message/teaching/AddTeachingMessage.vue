@@ -20,7 +20,7 @@ export default {
     return {
       teachingMessage: {
         id: '',
-        ownerId: '',
+        ownerId: this.$store.state.currentUserId,
         courseName: '',
         coursePeriod: '',
         className: '',

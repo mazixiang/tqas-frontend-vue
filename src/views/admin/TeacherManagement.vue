@@ -3,7 +3,7 @@
     <UserTable
       :users="teachers"
       title="教师信息管理"
-      @delete-teacher="deleteTeacher($event)"
+      @delete-user="deleteTeacher($event)"
       @refresh-table="refreshTable()"
       @add-user="addTeacher()"
       @update-user="updateTeacher($event)"
@@ -40,9 +40,6 @@ export default {
       });
     },
     async deleteTeacher(id) {
-      // await axios.get(urls.deleteTeacher).then((response) => {
-      //   console.log(response);
-      // });
       await deleteTeacher(id).then((response) => {
         switch (response.status) {
           case 'success':

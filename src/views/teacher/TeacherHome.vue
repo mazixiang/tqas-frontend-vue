@@ -20,13 +20,18 @@ export default {
   },
   methods: {
     async getWorkload() {
-      await getWorkload().then((response) => {
+      await getWorkload(this.currentUserId).then((response) => {
         switch (response.status) {
           case 'success':
             this.workload = response.data;
             break;
         }
       });
+    },
+  },
+  computed: {
+    currentUserId() {
+      return this.$store.state.currentUserId;
     },
   },
   async created() {

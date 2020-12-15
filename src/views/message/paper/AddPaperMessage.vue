@@ -18,7 +18,7 @@ export default {
     return {
       paperMessage: {
         id: '',
-        ownerId: '',
+        ownerId: this.$store.state.currentUserId,
         periodical: '',
         rank: '',
       },

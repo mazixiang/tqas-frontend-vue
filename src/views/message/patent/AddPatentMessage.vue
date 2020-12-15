@@ -18,7 +18,7 @@ export default {
     return {
       patentMessage: {
         id: '',
-        ownerId: '',
+        ownerId: this.$store.state.currentUserId,
         phase: '',
         rank: '',
       },

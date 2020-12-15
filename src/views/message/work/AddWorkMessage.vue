@@ -18,7 +18,7 @@ export default {
     return {
       workMessage: {
         id: '',
-        ownerId: '',
+        ownerId: this.$store.state.currentUserId,
         date: '',
         rank: '',
       },

@@ -112,6 +112,7 @@ async function teacherLogin(teacherData) {
       tmpResponse = response;
     });
 
+  console.log(tmpResponse);
   return {
     status: tmpResponse.data.status,
   };

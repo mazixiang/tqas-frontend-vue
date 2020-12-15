@@ -8,8 +8,8 @@
       >
         <div class="card my-2">
           <div class="card-body">
-            <h3 class="card-title">{{ convertToChinese(name) }}系数</h3>
-            <p class="card-text display-6">{{ value }}</p>
+            <h3 class="card-title">{{ convertToChinese(name) }}工作量</h3>
+            <p class="card-text display-6">{{ value.toFixed(2) }}</p>
           </div>
         </div>
       </div>

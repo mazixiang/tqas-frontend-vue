@@ -29,9 +29,9 @@ export default {
     async login() {
       await teacherLogin(this.teacherData).then((response) => {
         if (response.status === 1) {
-          this.$store.commit({
-            type: 'updateCurrentUser',
-            newUser: { id: this.formData.id, isAdmin: false },
+          this.$store.commit('updateCurrentUser', {
+            id: this.teacherData.id,
+            isAdmin: false,
           });
           this.$router.push('/teacher');
         }

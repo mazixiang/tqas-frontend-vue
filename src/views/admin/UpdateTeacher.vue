@@ -67,7 +67,7 @@ export default {
   computed: {
     nextPath() {
       if (this.$store.state.currentUserIsAdmin) {
-        return '/manageTeacher';
+        return '/admin/manageTeacher';
       } else {
         // 修改教师主页路径
         return '/teacher';

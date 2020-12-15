@@ -18,7 +18,7 @@ export default {
     return {
       issueMessage: {
         id: '',
-        ownerId: '',
+        ownerId: this.$store.state.currentUserId,
         phase: '',
         rank: '',
       },
